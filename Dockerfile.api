@@ -1,0 +1,11 @@
+FROM public.ecr.aws/lambda/python:3.12
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+COPY services "${LAMBDA_TASK_ROOT}/services"
+COPY infra/api_handler.py "${LAMBDA_TASK_ROOT}/api_handler.py"
+ENV PYTHONPATH=/var/task/services/api/src:/var/task/services/agent/src:/var/task/services/worker/src \
+    LAUNCHPAD_DATA_DIR=/tmp/launchpad-data \
+    LAUNCHPAD_STORE=dynamodb \
+    LAUNCHPAD_LOCAL_MODE=false \
+    LAUNCHPAD_VOICE=polly
+CMD ["api_handler.handler"]

@@ -1,0 +1,162 @@
+{
+  "description": "Five user-reference templates with real product footage in every scene.",
+  "job_id": "lp_5c2500b7e9924ca3",
+  "planner": "bedrock",
+  "model": "amazon.nova-lite-v1:0",
+  "qa": {
+    "duration_seconds": 30.042667,
+    "width": 2560,
+    "height": 1440,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "sha256": "92aadf8189c8797a73bedf40acd0f7900729ea0539d4caa22f05ac46275da84b",
+    "bytes": 3313142,
+    "product_name": "Northstar",
+    "template": "amazon-circuit-reference-v2-footage-first",
+    "video_border": "shared-tablet-bezel",
+    "browser_content_zoom": 1.4,
+    "heading_font": "Roboto Mono Bold",
+    "footage_corner_radius": 36,
+    "scene_layouts": [
+      {
+        "scene": 1,
+        "layout": "circuit-cover",
+        "reference_image": "temp1.jpg",
+        "header": "Northstar",
+        "items": [],
+        "source_ids": [
+          "source-1"
+        ]
+      },
+      {
+        "scene": 2,
+        "layout": "chapter-rails",
+        "reference_image": "temp2.jpg",
+        "header": "Evidence Library",
+        "items": [],
+        "source_ids": [
+          "source-2"
+        ]
+      },
+      {
+        "scene": 3,
+        "layout": "image-split",
+        "reference_image": "temp3.jpg",
+        "header": "Decision Review",
+        "items": [],
+        "source_ids": [
+          "source-3"
+        ]
+      },
+      {
+        "scene": 4,
+        "layout": "legend-list",
+        "reference_image": "temp4.jpg",
+        "header": "Comparing Evidence",
+        "items": [
+          {
+            "title": "Evidence Library",
+            "copy": "Keep the source beside the finding.",
+            "source_ids": [
+              "source-2"
+            ]
+          },
+          {
+            "title": "Decision Review",
+            "copy": "Review findings with your team.",
+            "source_ids": [
+              "source-3"
+            ]
+          },
+          {
+            "title": "Comparing Evidence",
+            "copy": "Compare evidence before making a product decision.",
+            "source_ids": [
+              "source-1"
+            ]
+          }
+        ],
+        "source_ids": [
+          "source-1"
+        ]
+      },
+      {
+        "scene": 5,
+        "layout": "tablet-demo",
+        "reference_image": "temp5.jpg",
+        "header": "Review Status",
+        "items": [],
+        "source_ids": [
+          "source-2"
+        ]
+      }
+    ],
+    "capture_dimensions": [
+      {
+        "width": 2240,
+        "height": 848
+      },
+      {
+        "width": 1984,
+        "height": 816
+      },
+      {
+        "width": 1792,
+        "height": 1000
+      },
+      {
+        "width": 1744,
+        "height": 864
+      },
+      {
+        "width": 1760,
+        "height": 912
+      }
+    ],
+    "captions": "Approximate word highlighting (proportional timings)",
+    "voices": [
+      {
+        "provider": "Amazon Polly",
+        "voice": "Joanna",
+        "scene": 1,
+        "original_seconds": 5.208,
+        "target_seconds": 6.0,
+        "reused_existing_audio": true
+      },
+      {
+        "provider": "Amazon Polly",
+        "voice": "Joanna",
+        "scene": 2,
+        "original_seconds": 7.176,
+        "target_seconds": 6.0,
+        "reused_existing_audio": true
+      },
+      {
+        "provider": "Amazon Polly",
+        "voice": "Joanna",
+        "scene": 3,
+        "original_seconds": 5.832,
+        "target_seconds": 6.0,
+        "reused_existing_audio": true
+      },
+      {
+        "provider": "Amazon Polly",
+        "voice": "Joanna",
+        "scene": 4,
+        "original_seconds": 4.056,
+        "target_seconds": 6.0,
+        "reused_existing_audio": true
+      },
+      {
+        "provider": "Amazon Polly",
+        "voice": "Joanna",
+        "scene": 5,
+        "original_seconds": 7.176,
+        "target_seconds": 6.0,
+        "reused_existing_audio": true
+      }
+    ]
+  },
+  "source_sha256": "d4a3fc717adbddf1bcc7174d7eccc0987b9a2dcd32b4c5f189f4ac9289849935",
+  "refresh": "Native-size re-recording, original script and narration"
+}

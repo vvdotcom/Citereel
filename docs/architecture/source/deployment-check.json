@@ -1,0 +1,212 @@
+{
+  "checked_at_utc": "2026-09-12T14:10:12.390108+00:00",
+  "region": "us-east-1",
+  "stacks": {
+    "launchpad-serverless": [
+      {
+        "LogicalResourceId": "ApiRole",
+        "ResourceType": "AWS::IAM::Role",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "ApiRoute",
+        "ResourceType": "AWS::Lambda::Function",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "ApiRouteAnyRequestPermission",
+        "ResourceType": "AWS::Lambda::Permission",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "Artifacts",
+        "ResourceType": "AWS::S3::Bucket",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "Cluster",
+        "ResourceType": "AWS::ECS::Cluster",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "DeadLetterQueue",
+        "ResourceType": "AWS::SQS::Queue",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "Dispatcher",
+        "ResourceType": "AWS::Lambda::Function",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "DispatcherQueue",
+        "ResourceType": "AWS::Lambda::EventSourceMapping",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "DispatcherRole",
+        "ResourceType": "AWS::IAM::Role",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "GatewayAttachment",
+        "ResourceType": "AWS::EC2::VPCGatewayAttachment",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "InternetGateway",
+        "ResourceType": "AWS::EC2::InternetGateway",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "Jobs",
+        "ResourceType": "AWS::DynamoDB::Table",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "OperationsDashboard",
+        "ResourceType": "AWS::CloudWatch::Dashboard",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicApi",
+        "ResourceType": "AWS::ApiGatewayV2::Api",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicApiApiGatewayDefaultStage",
+        "ResourceType": "AWS::ApiGatewayV2::Stage",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicRoute",
+        "ResourceType": "AWS::EC2::Route",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicRouteTable",
+        "ResourceType": "AWS::EC2::RouteTable",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicSubnetA",
+        "ResourceType": "AWS::EC2::Subnet",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicSubnetARoute",
+        "ResourceType": "AWS::EC2::SubnetRouteTableAssociation",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicSubnetB",
+        "ResourceType": "AWS::EC2::Subnet",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "PublicSubnetBRoute",
+        "ResourceType": "AWS::EC2::SubnetRouteTableAssociation",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "Recovery",
+        "ResourceType": "AWS::Lambda::Function",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "RecoveryDeadQueue",
+        "ResourceType": "AWS::Lambda::EventSourceMapping",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "RecoveryRole",
+        "ResourceType": "AWS::IAM::Role",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "RecoveryStoppedTask",
+        "ResourceType": "AWS::Events::Rule",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "RecoveryStoppedTaskPermission",
+        "ResourceType": "AWS::Lambda::Permission",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "RenderQueue",
+        "ResourceType": "AWS::SQS::Queue",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "StaticRouteRewrite",
+        "ResourceType": "AWS::CloudFront::Function",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "Vpc",
+        "ResourceType": "AWS::EC2::VPC",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WebAccessControl",
+        "ResourceType": "AWS::CloudFront::OriginAccessControl",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WebBucket",
+        "ResourceType": "AWS::S3::Bucket",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WebBucketPolicy",
+        "ResourceType": "AWS::S3::BucketPolicy",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WebDistribution",
+        "ResourceType": "AWS::CloudFront::Distribution",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WorkerExecutionRole",
+        "ResourceType": "AWS::IAM::Role",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WorkerLogGroup",
+        "ResourceType": "AWS::Logs::LogGroup",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WorkerRole",
+        "ResourceType": "AWS::IAM::Role",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WorkerSecurityGroup",
+        "ResourceType": "AWS::EC2::SecurityGroup",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "WorkerTask",
+        "ResourceType": "AWS::ECS::TaskDefinition",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      }
+    ],
+    "launchpad-agentcore": [
+      {
+        "LogicalResourceId": "AgentRole",
+        "ResourceType": "AWS::IAM::Role",
+        "ResourceStatus": "CREATE_COMPLETE"
+      },
+      {
+        "LogicalResourceId": "Runtime",
+        "ResourceType": "AWS::BedrockAgentCore::Runtime",
+        "ResourceStatus": "UPDATE_COMPLETE"
+      }
+    ]
+  },
+  "agentcore_configured": true,
+  "scheduled_monitor_present": false
+}

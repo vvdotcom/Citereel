@@ -1,0 +1,16 @@
+services:
+  launchpad:
+    build: .
+    ports:
+      - '3011:3011'
+    env_file: .env
+    environment:
+      LAUNCHPAD_LOCAL_MODE: 'false'
+      LAUNCHPAD_WEB_HOST: '0.0.0.0'
+      LAUNCHPAD_VOICE: polly
+      LAUNCHPAD_DATA_DIR: /data
+    volumes:
+      - launchpad-data:/data
+    restart: unless-stopped
+volumes:
+  launchpad-data:

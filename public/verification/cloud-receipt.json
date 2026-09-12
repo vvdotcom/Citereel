@@ -1,0 +1,2788 @@
+{
+  "id": "lp_7296bbbf86634eca",
+  "state": "ready_for_review",
+  "attempt": 5,
+  "planner": "bedrock",
+  "agent_runtime": "agentcore",
+  "agent_session_id": "9b71bf83-8618-4e6a-9289-f7995fec1044",
+  "agent_execution": {
+    "status": "completed",
+    "session_id": "9b71bf83-8618-4e6a-9289-f7995fec1044",
+    "at": 1788995578.1065087
+  },
+  "plan": {
+    "scenes": [
+      {
+        "title": "Centralized Workspace",
+        "on_screen_copy": "Unified research space.",
+        "narration": "Northstar centralizes your research in one workspace.",
+        "source_ids": [
+          "source-1"
+        ],
+        "page_id": "overview",
+        "scroll": "top"
+      },
+      {
+        "title": "Source Links",
+        "on_screen_copy": "Link sources to notes.",
+        "narration": "Easily save source links with your notes for quick reference.",
+        "source_ids": [
+          "source-1"
+        ],
+        "page_id": "overview",
+        "scroll": "top"
+      },
+      {
+        "title": "Evidence Comparison",
+        "on_screen_copy": "Compare evidence.",
+        "narration": "Compare evidence before making a product decision.",
+        "source_ids": [
+          "source-1"
+        ],
+        "page_id": "overview",
+        "scroll": "top"
+      },
+      {
+        "title": "Explore Northstar",
+        "on_screen_copy": "Discover more.",
+        "narration": "Explore Northstar to see how it can benefit your team.",
+        "source_ids": [
+          "source-1"
+        ],
+        "page_id": "overview",
+        "scroll": "top"
+      }
+    ]
+  },
+  "plan_history": [
+    {
+      "scenes": [
+        {
+          "title": "Centralized Workspace",
+          "on_screen_copy": "Bring your research into one workspace.",
+          "narration": "Northstar offers a centralized workspace to bring all your research into one place.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Source Links with Notes",
+          "on_screen_copy": "Save source links with your notes.",
+          "narration": "Easily save source links alongside your research notes for quick reference.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Compare Evidence",
+          "on_screen_copy": "Compare evidence before making a decision.",
+          "narration": "Compare evidence side by side to make informed product decisions.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Evidence Library",
+          "on_screen_copy": "Keep the source beside the finding.",
+          "narration": "Each research note includes its source link and review status for easy access.",
+          "source_ids": [
+            "source-2"
+          ],
+          "page_id": "evidence",
+          "scroll": "top"
+        },
+        {
+          "title": "Review Status",
+          "on_screen_copy": "Open a saved source to inspect the original context.",
+          "narration": "Open a saved source to inspect the original context and review the evidence.",
+          "source_ids": [
+            "source-2"
+          ],
+          "page_id": "evidence",
+          "scroll": "top"
+        },
+        {
+          "title": "Decision Review",
+          "on_screen_copy": "Review findings with your team.",
+          "narration": "Review findings with your team and link each decision to supporting evidence.",
+          "source_ids": [
+            "source-3"
+          ],
+          "page_id": "decisions",
+          "scroll": "top"
+        }
+      ]
+    },
+    {
+      "scenes": [
+        {
+          "title": "Centralized Workspace",
+          "on_screen_copy": "Bring your research into one workspace.",
+          "narration": "Northstar brings your research into one workspace.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Source Links with Notes",
+          "on_screen_copy": "Save source links with your notes.",
+          "narration": "Easily save source links alongside your research notes for quick reference.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Compare Evidence",
+          "on_screen_copy": "Compare evidence before making a decision.",
+          "narration": "Compare evidence before making a product decision.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Evidence Library",
+          "on_screen_copy": "Keep the source beside the finding.",
+          "narration": "Each research note includes its source link and review status for easy access.",
+          "source_ids": [
+            "source-2"
+          ],
+          "page_id": "evidence",
+          "scroll": "top"
+        },
+        {
+          "title": "Review Status",
+          "on_screen_copy": "Open a saved source to inspect the original context.",
+          "narration": "Open a saved source to inspect the original context and review the evidence.",
+          "source_ids": [
+            "source-2"
+          ],
+          "page_id": "evidence",
+          "scroll": "top"
+        },
+        {
+          "title": "Decision Review",
+          "on_screen_copy": "Review findings with your team.",
+          "narration": "Review findings with your team and link each decision to supporting evidence. Explore Northstar.",
+          "source_ids": [
+            "source-3"
+          ],
+          "page_id": "decisions",
+          "scroll": "top"
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "source-1",
+      "page_id": "overview",
+      "url": "fixture://northstar/overview",
+      "title": "Northstar research workspace",
+      "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision.",
+      "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+      "fixture": true,
+      "fixture_site": "northstar"
+    },
+    {
+      "id": "source-2",
+      "page_id": "evidence",
+      "url": "fixture://northstar/evidence",
+      "title": "Evidence library",
+      "excerpt": "Keep the source beside the finding. Each research note includes its source link and review status. Open a saved source to inspect the original context.",
+      "sha256": "4c80062eaffc6cd5d3242f427799f1b38a750719d551c0325c681f8ef0f159cf",
+      "fixture": true,
+      "fixture_site": "northstar"
+    },
+    {
+      "id": "source-3",
+      "page_id": "decisions",
+      "url": "fixture://northstar/decisions",
+      "title": "Decision review",
+      "excerpt": "Review findings with your team. Link each decision to supporting evidence. Mark a decision ready only after a person reviews it.",
+      "sha256": "b2ccfd055451c32165e42748f12191e5b1c084dffcb040459f2db7eb9852c480",
+      "fixture": true,
+      "fixture_site": "northstar"
+    }
+  ],
+  "claim_ledger": [
+    {
+      "scene": 1,
+      "kind": "title",
+      "claim": "Centralized Workspace",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 1,
+      "kind": "on_screen_copy",
+      "claim": "Unified research space.",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 1,
+      "kind": "narration",
+      "claim": "Northstar centralizes your research in one workspace.",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 2,
+      "kind": "title",
+      "claim": "Source Links",
+      "status": "source_matched",
+      "matches": [
+        {
+          "source_id": "source-1",
+          "quote": "Source Links"
+        }
+      ],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Exact wording found in the cited source; this is not independent fact verification."
+    },
+    {
+      "scene": 2,
+      "kind": "on_screen_copy",
+      "claim": "Link sources to notes.",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 2,
+      "kind": "narration",
+      "claim": "Easily save source links with your notes for quick reference.",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 3,
+      "kind": "title",
+      "claim": "Evidence Comparison",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 3,
+      "kind": "on_screen_copy",
+      "claim": "Compare evidence.",
+      "status": "source_matched",
+      "matches": [
+        {
+          "source_id": "source-1",
+          "quote": "Compare evidence."
+        }
+      ],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Exact wording found in the cited source; this is not independent fact verification."
+    },
+    {
+      "scene": 3,
+      "kind": "narration",
+      "claim": "Compare evidence before making a product decision.",
+      "status": "source_matched",
+      "matches": [
+        {
+          "source_id": "source-1",
+          "quote": "Compare evidence before making a product decision."
+        }
+      ],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Exact wording found in the cited source; this is not independent fact verification."
+    },
+    {
+      "scene": 4,
+      "kind": "title",
+      "claim": "Explore Northstar",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 4,
+      "kind": "on_screen_copy",
+      "claim": "Discover more.",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    },
+    {
+      "scene": 4,
+      "kind": "narration",
+      "claim": "Explore Northstar to see how it can benefit your team.",
+      "status": "needs_review",
+      "matches": [],
+      "sources": [
+        {
+          "id": "source-1",
+          "title": "Northstar research workspace",
+          "url": "fixture://northstar/overview",
+          "sha256": "cb121509b0f38d91338f94637185dfe831f75cde24ef3875044d8c55ab463c69",
+          "excerpt": "Bring your research into one workspace. Save source links with your notes. Compare evidence before making a product decision."
+        }
+      ],
+      "explanation": "Paraphrase or unsupported wording. A person must review the source before recording."
+    }
+  ],
+  "trace": [
+    {
+      "component": "api",
+      "event": "job_created",
+      "detail": "Production accepted with an idempotency key.",
+      "at": 1788994960.4403987
+    },
+    {
+      "component": "worker",
+      "event": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995003.2486236
+    },
+    {
+      "component": "worker",
+      "event": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995003.2603366
+    },
+    {
+      "component": "worker",
+      "event": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995003.2697573
+    },
+    {
+      "component": "strands",
+      "event": "inspect_authorized_site",
+      "detail": "Inspecting the authorized target",
+      "at": 1788995004.1464157
+    },
+    {
+      "component": "strands",
+      "event": "get_production_brief",
+      "detail": "Loaded creator intent",
+      "at": 1788995004.1859608
+    },
+    {
+      "component": "strands",
+      "event": "submit_storyboard",
+      "detail": "Validating storyboard",
+      "at": 1788995009.44249
+    },
+    {
+      "component": "bedrock",
+      "event": "planning_complete",
+      "detail": "Bedrock model call completed; saved-plan validation follows.",
+      "at": 1788995010.0773528
+    },
+    {
+      "component": "worker",
+      "event": "awaiting_plan_approval",
+      "detail": "Review scene copy, narration and sources before recording.",
+      "at": 1788995010.1481066
+    },
+    {
+      "component": "worker",
+      "event": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995091.9537716
+    },
+    {
+      "component": "worker",
+      "event": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995091.9727757
+    },
+    {
+      "component": "worker",
+      "event": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995091.9821157
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Recording the inspected pages in an isolated browser.",
+      "at": 1788995092.0177424
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 1 of 6. Public-site crawl delays are respected.",
+      "at": 1788995092.0338607
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 2 of 6. Public-site crawl delays are respected.",
+      "at": 1788995099.774489
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 3 of 6. Public-site crawl delays are respected.",
+      "at": 1788995107.036619
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 4 of 6. Public-site crawl delays are respected.",
+      "at": 1788995114.4172006
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 5 of 6. Public-site crawl delays are respected.",
+      "at": 1788995121.441493
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 6 of 6. Public-site crawl delays are respected.",
+      "at": 1788995128.5868495
+    },
+    {
+      "component": "worker",
+      "event": "narrating",
+      "detail": "Synthesizing the validated scene narration.",
+      "at": 1788995135.884975
+    },
+    {
+      "component": "worker",
+      "event": "rendering",
+      "detail": "Composing real browser footage, narration, typography and captions.",
+      "at": 1788995137.2047293
+    },
+    {
+      "component": "worker",
+      "event": "quality_check",
+      "detail": "Checking video/audio streams, dimensions, duration and file hash.",
+      "at": 1788995184.841474
+    },
+    {
+      "component": "worker",
+      "event": "ready_for_review",
+      "detail": "Export passed media checks. Ready for playback and review.",
+      "at": 1788995189.1808348
+    },
+    {
+      "component": "worker",
+      "event": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995577.2118247
+    },
+    {
+      "component": "worker",
+      "event": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995577.222514
+    },
+    {
+      "component": "worker",
+      "event": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995577.2329319
+    },
+    {
+      "component": "strands",
+      "event": "inspect_authorized_site",
+      "detail": "Inspecting the authorized target",
+      "at": 1788995579.4141488
+    },
+    {
+      "component": "strands",
+      "event": "get_production_brief",
+      "detail": "Loaded creator intent",
+      "at": 1788995579.46536
+    },
+    {
+      "component": "strands",
+      "event": "submit_storyboard",
+      "detail": "Validating storyboard",
+      "at": 1788995581.890259
+    },
+    {
+      "component": "strands",
+      "event": "submit_storyboard",
+      "detail": "Validating storyboard",
+      "at": 1788995584.4509344
+    },
+    {
+      "component": "bedrock",
+      "event": "planning_complete",
+      "detail": "Bedrock model call completed; saved-plan validation follows.",
+      "at": 1788995585.2619889
+    },
+    {
+      "component": "worker",
+      "event": "awaiting_plan_approval",
+      "detail": "Review scene copy, narration and sources before recording.",
+      "at": 1788995585.5119224
+    },
+    {
+      "component": "worker",
+      "event": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995704.2490075
+    },
+    {
+      "component": "worker",
+      "event": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995704.2617307
+    },
+    {
+      "component": "worker",
+      "event": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995704.2737007
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Recording the inspected pages in an isolated browser.",
+      "at": 1788995704.320387
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 1 of 4. Public-site crawl delays are respected.",
+      "at": 1788995704.3401124
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 2 of 4. Public-site crawl delays are respected.",
+      "at": 1788995704.6684043
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 3 of 4. Public-site crawl delays are respected.",
+      "at": 1788995704.943662
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 4 of 4. Public-site crawl delays are respected.",
+      "at": 1788995705.1335273
+    },
+    {
+      "component": "worker",
+      "event": "narrating",
+      "detail": "Synthesizing the validated scene narration.",
+      "at": 1788995718.0384133
+    },
+    {
+      "component": "worker",
+      "event": "rendering",
+      "detail": "Composing real browser footage, narration, typography and captions.",
+      "at": 1788995718.9949763
+    },
+    {
+      "component": "recovery",
+      "event": "worker_stopped",
+      "detail": "The cloud worker stopped before completion. Saved storyboard and S3 recordings are preserved. Retry to resume (maximum three retries).",
+      "at": 1788995786.9349759
+    },
+    {
+      "component": "worker",
+      "event": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995842.661551
+    },
+    {
+      "component": "worker",
+      "event": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995842.6754835
+    },
+    {
+      "component": "worker",
+      "event": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995842.6879327
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Recording the inspected pages in an isolated browser.",
+      "at": 1788995842.7439756
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 1 of 4. Public-site crawl delays are respected.",
+      "at": 1788995842.7649302
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 2 of 4. Public-site crawl delays are respected.",
+      "at": 1788995843.0172129
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 3 of 4. Public-site crawl delays are respected.",
+      "at": 1788995843.213661
+    },
+    {
+      "component": "worker",
+      "event": "capturing",
+      "detail": "Preparing recording 4 of 4. Public-site crawl delays are respected.",
+      "at": 1788995843.4536002
+    },
+    {
+      "component": "worker",
+      "event": "narrating",
+      "detail": "Synthesizing the validated scene narration.",
+      "at": 1788995843.6981268
+    },
+    {
+      "component": "worker",
+      "event": "rendering",
+      "detail": "Composing real browser footage, narration, typography and captions.",
+      "at": 1788995844.6531103
+    },
+    {
+      "component": "worker",
+      "event": "quality_check",
+      "detail": "Checking video/audio streams, dimensions, duration and file hash.",
+      "at": 1788995905.7017982
+    },
+    {
+      "component": "worker",
+      "event": "ready_for_review",
+      "detail": "Export passed media checks. Ready for playback and review.",
+      "at": 1788995908.4497788
+    }
+  ],
+  "timeline": [
+    {
+      "stage": "queued",
+      "detail": "Production saved to the durable queue.",
+      "at": 1788994960.440458
+    },
+    {
+      "stage": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995003.2486222
+    },
+    {
+      "stage": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995003.2603357
+    },
+    {
+      "stage": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995003.2697566
+    },
+    {
+      "stage": "awaiting_plan_approval",
+      "detail": "Review scene copy, narration and sources before recording.",
+      "at": 1788995010.1481051
+    },
+    {
+      "stage": "queued",
+      "detail": "Approve plan",
+      "at": 1788995049.3026252
+    },
+    {
+      "stage": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995091.9537702
+    },
+    {
+      "stage": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995091.9727747
+    },
+    {
+      "stage": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995091.982115
+    },
+    {
+      "stage": "capturing",
+      "detail": "Recording the inspected pages in an isolated browser.",
+      "at": 1788995092.0177412
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 1 of 6. Public-site crawl delays are respected.",
+      "at": 1788995092.0338597
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 2 of 6. Public-site crawl delays are respected.",
+      "at": 1788995099.7744877
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 3 of 6. Public-site crawl delays are respected.",
+      "at": 1788995107.036618
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 4 of 6. Public-site crawl delays are respected.",
+      "at": 1788995114.4171996
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 5 of 6. Public-site crawl delays are respected.",
+      "at": 1788995121.4414916
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 6 of 6. Public-site crawl delays are respected.",
+      "at": 1788995128.5868485
+    },
+    {
+      "stage": "narrating",
+      "detail": "Synthesizing the validated scene narration.",
+      "at": 1788995135.8849735
+    },
+    {
+      "stage": "rendering",
+      "detail": "Composing real browser footage, narration, typography and captions.",
+      "at": 1788995137.2047284
+    },
+    {
+      "stage": "quality_check",
+      "detail": "Checking video/audio streams, dimensions, duration and file hash.",
+      "at": 1788995184.8414729
+    },
+    {
+      "stage": "ready_for_review",
+      "detail": "Export passed media checks. Ready for playback and review.",
+      "at": 1788995189.1808338
+    },
+    {
+      "stage": "queued",
+      "detail": "Revision: founder_cut. Reusing source evidence and eligible recordings.",
+      "at": 1788995531.8927522
+    },
+    {
+      "stage": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995577.2118227
+    },
+    {
+      "stage": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995577.2225127
+    },
+    {
+      "stage": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995577.2329314
+    },
+    {
+      "stage": "awaiting_plan_approval",
+      "detail": "Review scene copy, narration and sources before recording.",
+      "at": 1788995585.5119214
+    },
+    {
+      "stage": "queued",
+      "detail": "Approve plan",
+      "at": 1788995660.7054672
+    },
+    {
+      "stage": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995704.2490053
+    },
+    {
+      "stage": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995704.2617283
+    },
+    {
+      "stage": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995704.2736995
+    },
+    {
+      "stage": "capturing",
+      "detail": "Recording the inspected pages in an isolated browser.",
+      "at": 1788995704.3203855
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 1 of 4. Public-site crawl delays are respected.",
+      "at": 1788995704.340111
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 2 of 4. Public-site crawl delays are respected.",
+      "at": 1788995704.6684027
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 3 of 4. Public-site crawl delays are respected.",
+      "at": 1788995704.9436605
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 4 of 4. Public-site crawl delays are respected.",
+      "at": 1788995705.133526
+    },
+    {
+      "stage": "narrating",
+      "detail": "Synthesizing the validated scene narration.",
+      "at": 1788995718.0384119
+    },
+    {
+      "stage": "rendering",
+      "detail": "Composing real browser footage, narration, typography and captions.",
+      "at": 1788995718.9949746
+    },
+    {
+      "stage": "queued",
+      "detail": "Retry",
+      "at": 1788995797.8799608
+    },
+    {
+      "stage": "inspecting",
+      "detail": "Inspecting the authorized website.",
+      "at": 1788995842.661549
+    },
+    {
+      "stage": "researching",
+      "detail": "Gathering official page evidence.",
+      "at": 1788995842.675481
+    },
+    {
+      "stage": "planning",
+      "detail": "Preparing a grounded storyboard.",
+      "at": 1788995842.6879313
+    },
+    {
+      "stage": "capturing",
+      "detail": "Recording the inspected pages in an isolated browser.",
+      "at": 1788995842.7439742
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 1 of 4. Public-site crawl delays are respected.",
+      "at": 1788995842.7649293
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 2 of 4. Public-site crawl delays are respected.",
+      "at": 1788995843.0172114
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 3 of 4. Public-site crawl delays are respected.",
+      "at": 1788995843.2136598
+    },
+    {
+      "stage": "capturing",
+      "detail": "Preparing recording 4 of 4. Public-site crawl delays are respected.",
+      "at": 1788995843.4535987
+    },
+    {
+      "stage": "narrating",
+      "detail": "Synthesizing the validated scene narration.",
+      "at": 1788995843.6981256
+    },
+    {
+      "stage": "rendering",
+      "detail": "Composing real browser footage, narration, typography and captions.",
+      "at": 1788995844.653109
+    },
+    {
+      "stage": "quality_check",
+      "detail": "Checking video/audio streams, dimensions, duration and file hash.",
+      "at": 1788995905.7017965
+    },
+    {
+      "stage": "ready_for_review",
+      "detail": "Export passed media checks. Ready for playback and review.",
+      "at": 1788995908.4497771
+    }
+  ],
+  "policy_receipts": [
+    {
+      "action": "storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Authorized brief; bounded model and tool calls; evidence validation required",
+      "at": 1788995003.299742,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995003.3993964,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995004.1125937,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995004.1315482,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995004.175583,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995004.1933534,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995004.2077656,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995009.4319146,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995009.4696298,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995009.4870703,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995010.1027074,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "awaiting_human",
+      "detail": "Review the storyboard and its cited evidence",
+      "at": 1788995010.1390681,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "approve_plan",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Owner, current version and allowed state verified; human decision persisted",
+      "at": 1788995049.3025682,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Approved plan or creator-authorized automatic capture; evidence attribution checked",
+      "at": 1788995092.0083292,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 1: bounded actions on inspected page overview",
+      "at": 1788995092.0478065,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 1: recording and capture receipts saved",
+      "at": 1788995099.7613196,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 2: bounded actions on inspected page overview",
+      "at": 1788995099.7841375,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 2: recording and capture receipts saved",
+      "at": 1788995107.0226932,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 3: bounded actions on inspected page overview",
+      "at": 1788995107.046598,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 3: recording and capture receipts saved",
+      "at": 1788995114.4031708,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 4: bounded actions on inspected page evidence",
+      "at": 1788995114.426617,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 4: recording and capture receipts saved",
+      "at": 1788995121.429064,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 5: bounded actions on inspected page evidence",
+      "at": 1788995121.4505184,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 5: recording and capture receipts saved",
+      "at": 1788995128.5745254,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 6: bounded actions on inspected page decisions",
+      "at": 1788995128.5968816,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 6: recording and capture receipts saved",
+      "at": 1788995135.8322272,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Validated storyboard; Polly narration; duration and media checks before export",
+      "at": 1788995135.871955,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995186.118261,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "save_export",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Save private artifacts only after media QA passes",
+      "at": 1788995186.1332097,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "save_export",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995189.1662912,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Authorized brief; bounded model and tool calls; evidence validation required",
+      "at": 1788995577.2503197,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995578.2390974,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995579.3670616,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995579.3952775,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995579.4444168,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995579.4810178,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995579.507123,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995581.868972,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "storyboard_validation",
+      "phase": "after",
+      "outcome": "blocked",
+      "detail": "1 validation error for Storyboard\nscenes.3.source_ids\n  List should have at least 1 item after validation, not 0 [type=too_short, input_value=[], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.13/v/too_short",
+      "at": 1788995581.90496,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "blocked",
+      "detail": "Tool did not satisfy its postcondition",
+      "at": 1788995581.9243507,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995582.023955,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995584.4172096,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995584.4953158,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995584.5209198,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995585.4744036,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "awaiting_human",
+      "detail": "Review the storyboard and its cited evidence",
+      "at": 1788995585.501548,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "approve_plan",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Owner, current version and allowed state verified; human decision persisted",
+      "at": 1788995660.7054183,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Approved plan or creator-authorized automatic capture; evidence attribution checked",
+      "at": 1788995704.3076234,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 1: reused matching capture with provenance",
+      "at": 1788995704.651381,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 2: reused matching capture with provenance",
+      "at": 1788995704.9258964,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 3: reused matching capture with provenance",
+      "at": 1788995705.1171322,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 4: bounded actions on inspected page overview",
+      "at": 1788995705.145181,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 4: recording and capture receipts saved",
+      "at": 1788995717.9932349,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Validated storyboard; Polly narration; duration and media checks before export",
+      "at": 1788995718.0213957,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "worker_recovery",
+      "phase": "after",
+      "outcome": "blocked",
+      "detail": "The cloud worker stopped before completion. Saved storyboard and S3 recordings are preserved. Retry to resume (maximum three retries).",
+      "at": 1788995786.9349778,
+      "attempt": 4,
+      "policy_version": "2026-09-09"
+    },
+    {
+      "action": "retry",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Owner, current version and allowed state verified; human decision persisted",
+      "at": 1788995797.8799052,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Approved plan or creator-authorized automatic capture; evidence attribution checked",
+      "at": 1788995842.7311637,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 1: reused matching capture with provenance",
+      "at": 1788995842.9978158,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 2: reused matching capture with provenance",
+      "at": 1788995843.1957214,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 3: reused matching capture with provenance",
+      "at": 1788995843.4355254,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 4: reused matching capture with provenance",
+      "at": 1788995843.6488597,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Validated storyboard; Polly narration; duration and media checks before export",
+      "at": 1788995843.6799672,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995907.1541424,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "save_export",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Save private artifacts only after media QA passes",
+      "at": 1788995907.1739817,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "save_export",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995908.429087,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    }
+  ],
+  "capture_reuse": {
+    "reused": 4,
+    "recorded": 0
+  },
+  "exports": [
+    {
+      "attempt": 2,
+      "qa": {
+        "duration_seconds": 30.043,
+        "width": 2560,
+        "height": 1440,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "sha256": "35eebfdbb9b89209ee156849ff49e8314711d0640113c5758a84b2fd8009c5fb",
+        "bytes": 6702204,
+        "product_name": "Northstar",
+        "template": "amazon-circuit-reference-v2-footage-first",
+        "video_border": "shared-tablet-bezel",
+        "browser_content_zoom": 1.4,
+        "camera_motion": "1x to 1.22x to 1x; first 3 seconds unzoomed",
+        "camera_anchor": "center",
+        "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
+        "recorded_clicks": 3,
+        "heading_font": "Roboto Mono Bold",
+        "footage_corner_radius": 36,
+        "scene_layouts": [
+          {
+            "scene": 1,
+            "layout": "circuit-cover",
+            "reference_image": "temp1.jpg",
+            "header": "Northstar",
+            "items": [],
+            "source_ids": [
+              "source-1"
+            ]
+          },
+          {
+            "scene": 2,
+            "layout": "chapter-rails",
+            "reference_image": "temp2.jpg",
+            "header": "Source Links with Notes",
+            "items": [],
+            "source_ids": [
+              "source-1"
+            ]
+          },
+          {
+            "scene": 3,
+            "layout": "image-split",
+            "reference_image": "temp3.jpg",
+            "header": "Compare Evidence",
+            "items": [],
+            "source_ids": [
+              "source-1"
+            ]
+          },
+          {
+            "scene": 4,
+            "layout": "legend-list",
+            "reference_image": "temp4.jpg",
+            "header": "Evidence Library",
+            "items": [
+              {
+                "title": "Source Links with Notes",
+                "copy": "Save source links with your notes.",
+                "source_ids": [
+                  "source-1"
+                ]
+              },
+              {
+                "title": "Compare Evidence",
+                "copy": "Compare evidence before making a decision.",
+                "source_ids": [
+                  "source-1"
+                ]
+              },
+              {
+                "title": "Evidence Library",
+                "copy": "Keep the source beside the finding.",
+                "source_ids": [
+                  "source-2"
+                ]
+              }
+            ],
+            "source_ids": [
+              "source-2"
+            ]
+          },
+          {
+            "scene": 5,
+            "layout": "tablet-demo",
+            "reference_image": "temp5.jpg",
+            "header": "Review Status",
+            "items": [],
+            "source_ids": [
+              "source-2"
+            ]
+          },
+          {
+            "scene": 6,
+            "layout": "circuit-cover",
+            "reference_image": "temp1.jpg",
+            "header": "Decision Review",
+            "items": [],
+            "source_ids": [
+              "source-3"
+            ]
+          }
+        ],
+        "capture_dimensions": [
+          {
+            "width": 2240,
+            "height": 848
+          },
+          {
+            "width": 1984,
+            "height": 816
+          },
+          {
+            "width": 1792,
+            "height": 1000
+          },
+          {
+            "width": 1744,
+            "height": 864
+          },
+          {
+            "width": 1760,
+            "height": 912
+          },
+          {
+            "width": 2240,
+            "height": 848
+          }
+        ],
+        "captions": "Approximate word highlighting (proportional timings)",
+        "voices": [
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 1,
+            "original_seconds": 2.856,
+            "target_seconds": 5.0
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 2,
+            "original_seconds": 4.224,
+            "target_seconds": 5.0
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 3,
+            "original_seconds": 2.928,
+            "target_seconds": 5.0
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 4,
+            "original_seconds": 4.608,
+            "target_seconds": 5.0
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 5,
+            "original_seconds": 4.32,
+            "target_seconds": 5.0
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 6,
+            "original_seconds": 5.856,
+            "target_seconds": 5.0
+          }
+        ]
+      },
+      "created_at": 1788995189.174113,
+      "capture_reuse": {
+        "reused": 0,
+        "recorded": 6
+      },
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f",
+      "export_sha256": "35eebfdbb9b89209ee156849ff49e8314711d0640113c5758a84b2fd8009c5fb"
+    },
+    {
+      "attempt": 5,
+      "qa": {
+        "duration_seconds": 30.043,
+        "width": 2560,
+        "height": 1440,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "sha256": "3b59da6c4e975d3793203bf7002372d1e0e973b60117604cf687b8ab763b4137",
+        "bytes": 6667975,
+        "product_name": "Northstar",
+        "template": "amazon-circuit-reference-v2-footage-first",
+        "video_border": "shared-tablet-bezel",
+        "browser_content_zoom": 1.4,
+        "camera_motion": "1x to 1.22x to 1x; first 3 seconds unzoomed",
+        "camera_anchor": "center",
+        "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
+        "recorded_clicks": 0,
+        "heading_font": "Roboto Mono Bold",
+        "footage_corner_radius": 36,
+        "scene_layouts": [
+          {
+            "scene": 1,
+            "layout": "circuit-cover",
+            "reference_image": "temp1.jpg",
+            "header": "Northstar",
+            "items": [],
+            "source_ids": [
+              "source-1"
+            ]
+          },
+          {
+            "scene": 2,
+            "layout": "chapter-rails",
+            "reference_image": "temp2.jpg",
+            "header": "Source Links",
+            "items": [],
+            "source_ids": [
+              "source-1"
+            ]
+          },
+          {
+            "scene": 3,
+            "layout": "image-split",
+            "reference_image": "temp3.jpg",
+            "header": "Evidence Comparison",
+            "items": [],
+            "source_ids": [
+              "source-1"
+            ]
+          },
+          {
+            "scene": 4,
+            "layout": "legend-list",
+            "reference_image": "temp4.jpg",
+            "header": "Explore Northstar",
+            "items": [
+              {
+                "title": "Source Links",
+                "copy": "Link sources to notes.",
+                "source_ids": [
+                  "source-1"
+                ]
+              },
+              {
+                "title": "Evidence Comparison",
+                "copy": "Compare evidence.",
+                "source_ids": [
+                  "source-1"
+                ]
+              },
+              {
+                "title": "Explore Northstar",
+                "copy": "Discover more.",
+                "source_ids": [
+                  "source-1"
+                ]
+              }
+            ],
+            "source_ids": [
+              "source-1"
+            ]
+          }
+        ],
+        "capture_dimensions": [
+          {
+            "width": 2240,
+            "height": 848
+          },
+          {
+            "width": 1984,
+            "height": 816
+          },
+          {
+            "width": 1792,
+            "height": 1000
+          },
+          {
+            "width": 1744,
+            "height": 864
+          }
+        ],
+        "captions": "Approximate word highlighting (proportional timings)",
+        "voices": [
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 1,
+            "original_seconds": 3.432,
+            "target_seconds": 7.5
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 2,
+            "original_seconds": 3.288,
+            "target_seconds": 7.5
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 3,
+            "original_seconds": 2.928,
+            "target_seconds": 7.5
+          },
+          {
+            "provider": "Amazon Polly",
+            "voice": "Joanna",
+            "scene": 4,
+            "original_seconds": 3.024,
+            "target_seconds": 7.5
+          }
+        ]
+      },
+      "created_at": 1788995908.439819,
+      "capture_reuse": {
+        "reused": 4,
+        "recorded": 0
+      },
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300",
+      "export_sha256": "3b59da6c4e975d3793203bf7002372d1e0e973b60117604cf687b8ab763b4137"
+    }
+  ],
+  "recovery_test": {
+    "job_id": "lp_7296bbbf86634eca",
+    "interrupted_attempt": 4,
+    "state_before": "rendering",
+    "prior_export_sha256": "35eebfdbb9b89209ee156849ff49e8314711d0640113c5758a84b2fd8009c5fb",
+    "plan_before": {
+      "scenes": [
+        {
+          "title": "Centralized Workspace",
+          "on_screen_copy": "Unified research space.",
+          "narration": "Northstar centralizes your research in one workspace.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Source Links",
+          "on_screen_copy": "Link sources to notes.",
+          "narration": "Easily save source links with your notes for quick reference.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Evidence Comparison",
+          "on_screen_copy": "Compare evidence.",
+          "narration": "Compare evidence before making a product decision.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        },
+        {
+          "title": "Explore Northstar",
+          "on_screen_copy": "Discover more.",
+          "narration": "Explore Northstar to see how it can benefit your team.",
+          "source_ids": [
+            "source-1"
+          ],
+          "page_id": "overview",
+          "scroll": "top"
+        }
+      ]
+    },
+    "stopped_at": 1788995721.3367748,
+    "state_after": "blocked",
+    "recovery_error": "The cloud worker stopped before completion. Saved storyboard and S3 recordings are preserved. Retry to resume (maximum three retries).",
+    "prior_export_download_sha256": "35eebfdbb9b89209ee156849ff49e8314711d0640113c5758a84b2fd8009c5fb",
+    "plan_preserved": true,
+    "recovery_receipts": [
+      {
+        "action": "worker_recovery",
+        "phase": "after",
+        "outcome": "blocked",
+        "detail": "The cloud worker stopped before completion. Saved storyboard and S3 recordings are preserved. Retry to resume (maximum three retries).",
+        "at": 1788995786.9349778,
+        "attempt": 4,
+        "policy_version": "2026-09-09"
+      }
+    ]
+  },
+  "cloud_log_evidence": [
+    {
+      "log_group": "/aws/lambda/launchpad-serverless-Dispatcher-9qrrL9lEnWhN",
+      "timestamp": 1788994962123,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "task_dispatched",
+      "attempt": 1
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995003244,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "worker_started",
+      "attempt": 1
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995003307,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "storyboard",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995003405,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995004118,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "get_production_brief",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995004138,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "inspect_authorized_site",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995004183,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "inspect_authorized_site",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995004198,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "get_production_brief",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995004212,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995009436,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995009476,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995009493,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995010108,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "storyboard",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995010108,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "action_completed",
+      "action": "storyboard",
+      "elapsed_seconds": 6.8
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995010144,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "awaiting_human"
+    },
+    {
+      "log_group": "/aws/lambda/launchpad-serverless-Dispatcher-9qrrL9lEnWhN",
+      "timestamp": 1788995050942,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "task_dispatched",
+      "attempt": 2
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995091950,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "worker_started",
+      "attempt": 2
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995092014,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995092060,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995099767,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995099790,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995107030,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995107052,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995114410,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995114432,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995121434,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995121456,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995128580,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995128603,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995135838,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995135878,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995186126,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "narrate_render_qa",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995186126,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "action_completed",
+      "action": "narrate_render_qa",
+      "elapsed_seconds": 50.25
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995186139,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "save_export",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995189174,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "save_export",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995189174,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "action_completed",
+      "action": "save_export",
+      "elapsed_seconds": 3.03
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995189187,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "export_ready",
+      "attempt": 2
+    },
+    {
+      "log_group": "/aws/lambda/launchpad-serverless-Dispatcher-9qrrL9lEnWhN",
+      "timestamp": 1788995536737,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "task_dispatched",
+      "attempt": 3
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995577207,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "worker_started",
+      "attempt": 3
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995577256,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "storyboard",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995577283,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "agentcore_invoked",
+      "attempt": 3,
+      "session_id": "9b71bf83-8618-4e6a-9289-f7995fec1044"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995578117,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "agentcore_planning_started",
+      "session_id": "9b71bf83-8618-4e6a-9289-f7995fec1044"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995578248,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995579375,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "get_production_brief",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995579403,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "inspect_authorized_site",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995579451,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "inspect_authorized_site",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995579489,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "get_production_brief",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995579515,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995581878,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995581913,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "storyboard_validation",
+      "phase": "after",
+      "outcome": "blocked"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995581951,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "blocked"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995582032,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995584426,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995584504,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/bedrock-agentcore/runtimes/launchpad_concierge-mSpoPr3pi7-DEFAULT",
+      "timestamp": 1788995584530,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995585330,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "agentcore_completed",
+      "session_id": "9b71bf83-8618-4e6a-9289-f7995fec1044"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995585465,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "agentcore_session_stopped",
+      "session_id": "9b71bf83-8618-4e6a-9289-f7995fec1044"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995585483,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "storyboard",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995585483,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "action_completed",
+      "action": "storyboard",
+      "elapsed_seconds": 8.23
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995585508,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "awaiting_human"
+    },
+    {
+      "log_group": "/aws/lambda/launchpad-serverless-Dispatcher-9qrrL9lEnWhN",
+      "timestamp": 1788995662158,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "task_dispatched",
+      "attempt": 4
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995704243,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "worker_started",
+      "attempt": 4
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995704316,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995704659,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995704934,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995705124,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995705152,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995718001,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995718029,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "/aws/lambda/launchpad-serverless-Recovery-iBcKAYG3uAG8",
+      "timestamp": 1788995787014,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "recovery_available",
+      "attempt": 4
+    },
+    {
+      "log_group": "/aws/lambda/launchpad-serverless-Dispatcher-9qrrL9lEnWhN",
+      "timestamp": 1788995799539,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "task_dispatched",
+      "attempt": 5
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995842656,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "worker_started",
+      "attempt": 5
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995842739,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995843006,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995843204,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995843444,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995843657,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995843688,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995907164,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "narrate_render_qa",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995907164,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "action_completed",
+      "action": "narrate_render_qa",
+      "elapsed_seconds": 63.48
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995907182,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "save_export",
+      "phase": "before",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995908439,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "policy",
+      "action": "save_export",
+      "phase": "after",
+      "outcome": "passed"
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995908439,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "action_completed",
+      "action": "save_export",
+      "elapsed_seconds": 1.26
+    },
+    {
+      "log_group": "launchpad-serverless-WorkerLogGroup-eLiq88e36Oi7",
+      "timestamp": 1788995908465,
+      "job_id": "lp_7296bbbf86634eca",
+      "event": "export_ready",
+      "attempt": 5
+    }
+  ],
+  "disclosure": "Owned synthetic Northstar site; real AWS services. Not a customer study. Claims received an engineering review, not independent verification."
+}

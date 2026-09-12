@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - find . -maxdepth 3 -type f | sort
+      - ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - REGISTRY=${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+      - aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REGISTRY}
+  build:
+    commands:
+      - docker build --pull -f Dockerfile.api -t ${REGISTRY}/launchpad-api:latest .
+      - docker build --pull -f Dockerfile.worker -t ${REGISTRY}/launchpad-worker:latest .
+      - docker push ${REGISTRY}/launchpad-api:latest
+      - docker push ${REGISTRY}/launchpad-worker:latest

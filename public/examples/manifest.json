@@ -1,0 +1,468 @@
+{
+  "presentation": {
+    "job_id": "lp_e33fa1b90df444e6",
+    "planner": "bedrock",
+    "model": "amazon.nova-lite-v1:0",
+    "model_usage": {
+      "inputTokens": 33741,
+      "outputTokens": 6002,
+      "totalTokens": 39743
+    },
+    "orchestrator": "Strands Agents",
+    "qa": {
+      "duration_seconds": 30.042667,
+      "width": 2560,
+      "height": 1440,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "sha256": "abe5186f2ad0ccdc9867bdf31e440a0127d2bfd6e924db628b6c905caa53b98c",
+      "bytes": 6549774,
+      "product_name": "Northstar",
+      "template": "amazon-circuit-reference-v2-footage-first",
+      "video_border": "shared-tablet-bezel",
+      "browser_content_zoom": 1.4,
+      "camera_motion": "1x to 1.22x to 1x; first 3 seconds unzoomed",
+      "camera_anchor": "center",
+      "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
+      "recorded_clicks": 3,
+      "heading_font": "Roboto Mono Bold",
+      "footage_corner_radius": 36,
+      "scene_layouts": [
+        {
+          "scene": 1,
+          "layout": "circuit-cover",
+          "reference_image": "temp1.jpg",
+          "header": "Northstar",
+          "items": [],
+          "source_ids": [
+            "source-1"
+          ]
+        },
+        {
+          "scene": 2,
+          "layout": "chapter-rails",
+          "reference_image": "temp2.jpg",
+          "header": "Evidence Library",
+          "items": [],
+          "source_ids": [
+            "source-2"
+          ]
+        },
+        {
+          "scene": 3,
+          "layout": "image-split",
+          "reference_image": "temp3.jpg",
+          "header": "Decision Review",
+          "items": [],
+          "source_ids": [
+            "source-3"
+          ]
+        },
+        {
+          "scene": 4,
+          "layout": "legend-list",
+          "reference_image": "temp4.jpg",
+          "header": "Compare Evidence",
+          "items": [
+            {
+              "title": "Evidence Library",
+              "copy": "Keep source beside finding",
+              "source_ids": [
+                "source-2"
+              ]
+            },
+            {
+              "title": "Decision Review",
+              "copy": "Review findings with team",
+              "source_ids": [
+                "source-3"
+              ]
+            },
+            {
+              "title": "Compare Evidence",
+              "copy": "Compare evidence before deciding",
+              "source_ids": [
+                "source-1",
+                "source-2"
+              ]
+            }
+          ],
+          "source_ids": [
+            "source-1",
+            "source-2"
+          ]
+        },
+        {
+          "scene": 5,
+          "layout": "tablet-demo",
+          "reference_image": "temp5.jpg",
+          "header": "Mark Decision Ready",
+          "items": [],
+          "source_ids": [
+            "source-3"
+          ]
+        }
+      ],
+      "capture_dimensions": [
+        {
+          "width": 2240,
+          "height": 848
+        },
+        {
+          "width": 1984,
+          "height": 816
+        },
+        {
+          "width": 1792,
+          "height": 1000
+        },
+        {
+          "width": 1744,
+          "height": 864
+        },
+        {
+          "width": 1760,
+          "height": 912
+        }
+      ],
+      "captions": "Approximate word highlighting (proportional timings)",
+      "voices": [
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 1,
+          "original_seconds": 4.584,
+          "target_seconds": 6.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 2,
+          "original_seconds": 5.832,
+          "target_seconds": 6.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 3,
+          "original_seconds": 4.656,
+          "target_seconds": 6.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 4,
+          "original_seconds": 6.504,
+          "target_seconds": 6.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 5,
+          "original_seconds": 5.832,
+          "target_seconds": 6.0
+        }
+      ]
+    }
+  },
+  "product": {
+    "job_id": "lp_82539eb5a2524c07",
+    "planner": "bedrock",
+    "model": "amazon.nova-lite-v1:0",
+    "model_usage": {
+      "inputTokens": 5255,
+      "outputTokens": 482,
+      "totalTokens": 5737
+    },
+    "orchestrator": "Strands Agents",
+    "qa": {
+      "duration_seconds": 30.042667,
+      "width": 2560,
+      "height": 1440,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "sha256": "4bf870ecfeadf6c48cc227c4469fa2c35a81dca3eb0acfc28742660fbbb4fa33",
+      "bytes": 5971386,
+      "product_name": "Northstar",
+      "template": "amazon-circuit-reference-v2-footage-first",
+      "video_border": "shared-tablet-bezel",
+      "browser_content_zoom": 1.4,
+      "camera_motion": "1x to 1.22x to 1x; first 3 seconds unzoomed",
+      "camera_anchor": "center",
+      "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
+      "recorded_clicks": 2,
+      "heading_font": "Roboto Mono Bold",
+      "footage_corner_radius": 36,
+      "scene_layouts": [
+        {
+          "scene": 1,
+          "layout": "circuit-cover",
+          "reference_image": "temp1.jpg",
+          "header": "Northstar",
+          "items": [],
+          "source_ids": [
+            "source-1"
+          ]
+        },
+        {
+          "scene": 2,
+          "layout": "chapter-rails",
+          "reference_image": "temp2.jpg",
+          "header": "Evidence Library",
+          "items": [],
+          "source_ids": [
+            "source-2"
+          ]
+        },
+        {
+          "scene": 3,
+          "layout": "image-split",
+          "reference_image": "temp3.jpg",
+          "header": "Decision Review",
+          "items": [],
+          "source_ids": [
+            "source-3"
+          ]
+        }
+      ],
+      "capture_dimensions": [
+        {
+          "width": 2240,
+          "height": 848
+        },
+        {
+          "width": 1984,
+          "height": 816
+        },
+        {
+          "width": 1792,
+          "height": 1000
+        }
+      ],
+      "captions": "Approximate word highlighting (proportional timings)",
+      "voices": [
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 1,
+          "original_seconds": 5.256,
+          "target_seconds": 10.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 2,
+          "original_seconds": 5.832,
+          "target_seconds": 10.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 3,
+          "original_seconds": 8.016,
+          "target_seconds": 10.0
+        }
+      ]
+    }
+  },
+  "spotlight": {
+    "job_id": "lp_0140a59405a740e2",
+    "planner": "bedrock",
+    "model": "amazon.nova-lite-v1:0",
+    "model_usage": {
+      "inputTokens": 5417,
+      "outputTokens": 918,
+      "totalTokens": 6335
+    },
+    "orchestrator": "Strands Agents",
+    "qa": {
+      "duration_seconds": 30.042667,
+      "width": 2560,
+      "height": 1440,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "sha256": "449d1a7b2d3cebda38154b84508d45763c3ec51a710343f52a32b687b6c1e6e9",
+      "bytes": 6296898,
+      "product_name": "Northstar",
+      "template": "amazon-circuit-reference-v2-footage-first",
+      "video_border": "shared-tablet-bezel",
+      "browser_content_zoom": 1.4,
+      "camera_motion": "1x to 1.22x to 1x; first 3 seconds unzoomed",
+      "camera_anchor": "center",
+      "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
+      "recorded_clicks": 2,
+      "heading_font": "Roboto Mono Bold",
+      "footage_corner_radius": 36,
+      "scene_layouts": [
+        {
+          "scene": 1,
+          "layout": "circuit-cover",
+          "reference_image": "temp1.jpg",
+          "header": "Northstar",
+          "items": [],
+          "source_ids": [
+            "source-1"
+          ]
+        },
+        {
+          "scene": 2,
+          "layout": "chapter-rails",
+          "reference_image": "temp2.jpg",
+          "header": "Evidence Library",
+          "items": [],
+          "source_ids": [
+            "source-2"
+          ]
+        },
+        {
+          "scene": 3,
+          "layout": "image-split",
+          "reference_image": "temp3.jpg",
+          "header": "Decision Review",
+          "items": [],
+          "source_ids": [
+            "source-3"
+          ]
+        }
+      ],
+      "capture_dimensions": [
+        {
+          "width": 2240,
+          "height": 848
+        },
+        {
+          "width": 1984,
+          "height": 816
+        },
+        {
+          "width": 1792,
+          "height": 1000
+        }
+      ],
+      "captions": "Approximate word highlighting (proportional timings)",
+      "voices": [
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 1,
+          "original_seconds": 4.584,
+          "target_seconds": 10.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 2,
+          "original_seconds": 5.832,
+          "target_seconds": 10.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 3,
+          "original_seconds": 4.656,
+          "target_seconds": 10.0
+        }
+      ]
+    }
+  },
+  "short": {
+    "job_id": "lp_ac9ccef671de4d79",
+    "planner": "bedrock",
+    "model": "amazon.nova-lite-v1:0",
+    "model_usage": {
+      "inputTokens": 5158,
+      "outputTokens": 410,
+      "totalTokens": 5568
+    },
+    "orchestrator": "Strands Agents",
+    "qa": {
+      "duration_seconds": 30.042667,
+      "width": 1080,
+      "height": 1920,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "sha256": "1c3755a9d16dfbd84a94c2cb7d6109b27162f6496c85d42365b43f91c316138c",
+      "bytes": 5940529,
+      "product_name": "Northstar",
+      "template": "amazon-circuit-reference-v2-footage-first",
+      "video_border": "shared-tablet-bezel",
+      "browser_content_zoom": 1.15,
+      "camera_motion": "1x to 1.22x to 1x; first 3 seconds unzoomed",
+      "camera_anchor": "center",
+      "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
+      "recorded_clicks": 2,
+      "heading_font": "Roboto Mono Bold",
+      "footage_corner_radius": 36,
+      "scene_layouts": [
+        {
+          "scene": 1,
+          "layout": "circuit-cover",
+          "reference_image": "temp1.jpg",
+          "header": "Northstar",
+          "items": [],
+          "source_ids": [
+            "source-1"
+          ]
+        },
+        {
+          "scene": 2,
+          "layout": "chapter-rails",
+          "reference_image": "temp2.jpg",
+          "header": "Evidence library",
+          "items": [],
+          "source_ids": [
+            "source-2"
+          ]
+        },
+        {
+          "scene": 3,
+          "layout": "image-split",
+          "reference_image": "temp3.jpg",
+          "header": "Decision review",
+          "items": [],
+          "source_ids": [
+            "source-3"
+          ]
+        }
+      ],
+      "capture_dimensions": [
+        {
+          "width": 972,
+          "height": 1060
+        },
+        {
+          "width": 972,
+          "height": 1060
+        },
+        {
+          "width": 972,
+          "height": 1060
+        }
+      ],
+      "captions": "Approximate word highlighting (proportional timings)",
+      "voices": [
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 1,
+          "original_seconds": 5.736,
+          "target_seconds": 10.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 2,
+          "original_seconds": 7.176,
+          "target_seconds": 10.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 3,
+          "original_seconds": 5.832,
+          "target_seconds": 10.0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Launchpad Strands planning agent on serverless AgentCore Runtime.
+Parameters:
+  AgentImageUri: { Type: String }
+  JobsTableName: { Type: String }
+  ModelId: { Type: String, Default: 'amazon.nova-lite-v1:0' }
+Resources:
+  AgentRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: bedrock-agentcore.amazonaws.com }
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals: { 'aws:SourceAccount': !Ref 'AWS::AccountId' }
+              ArnLike: { 'aws:SourceArn': !Sub 'arn:aws:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:*' }
+      Policies:
+        - PolicyName: launchpad-agent-runtime
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - { Effect: Allow, Action: [dynamodb:GetItem, dynamodb:UpdateItem], Resource: !Sub 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${JobsTableName}' }
+              - { Effect: Allow, Action: [bedrock:InvokeModel, bedrock:InvokeModelWithResponseStream], Resource: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/${ModelId}' }
+              - { Effect: Allow, Action: [ecr:BatchGetImage, ecr:GetDownloadUrlForLayer], Resource: !Sub 'arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/launchpad-agent' }
+              - { Effect: Allow, Action: ecr:GetAuthorizationToken, Resource: '*' }
+              - { Effect: Allow, Action: [logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents, logs:DescribeLogStreams], Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/bedrock-agentcore/runtimes/launchpad_concierge*' }
+              - { Effect: Allow, Action: [logs:DescribeLogGroups, xray:PutTraceSegments, xray:PutTelemetryRecords, xray:GetSamplingRules, xray:GetSamplingTargets], Resource: '*' }
+              - { Effect: Allow, Action: bedrock-agentcore:GetWorkloadAccessToken, Resource: [!Sub 'arn:aws:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:workload-identity-directory/default', !Sub 'arn:aws:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:workload-identity-directory/default/workload-identity/*'] }
+  Runtime:
+    Type: AWS::BedrockAgentCore::Runtime
+    Properties:
+      AgentRuntimeName: launchpad_concierge
+      AgentRuntimeArtifact:
+        ContainerConfiguration: { ContainerUri: !Ref AgentImageUri }
+      RoleArn: !GetAtt AgentRole.Arn
+      NetworkConfiguration: { NetworkMode: PUBLIC }
+      ProtocolConfiguration: HTTP
+      LifecycleConfiguration: { IdleRuntimeSessionTimeout: 60, MaxLifetime: 900 }
+      EnvironmentVariables:
+        LAUNCHPAD_DYNAMODB_TABLE: !Ref JobsTableName
+        AWS_REGION: !Ref AWS::Region
+        BEDROCK_MODEL_ID: !Ref ModelId
+        OTEL_SERVICE_NAME: launchpad-concierge
+        OTEL_PYTHON_DISTRO: aws_distro
+        OTEL_PYTHON_CONFIGURATOR: aws_configurator
+        AGENT_OBSERVABILITY_ENABLED: 'true'
+Outputs:
+  AgentRuntimeArn: { Value: !GetAtt Runtime.AgentRuntimeArn }
+  AgentRuntimeId: { Value: !GetAtt Runtime.AgentRuntimeId }

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "01-aws-full-stack.svg",
+    "width": 2460,
+    "height": 1660
+  },
+  {
+    "file": "02-backend-production-workflow.svg",
+    "width": 2280,
+    "height": 1370
+  },
+  {
+    "file": "03-strands-agent-loop.svg",
+    "width": 2200,
+    "height": 1160
+  },
+  {
+    "file": "04-agent-policy-hooks.svg",
+    "width": 2600,
+    "height": 1260
+  }
+]

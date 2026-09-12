@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2280" height="1370" viewBox="0 0 2280 1370" role="img" aria-labelledby="title description">
+<title id="title">Backend production workflow</title><desc id="description">From an authorized website and creator brief to a reviewed, private video export.</desc>
+<defs>
+<marker id="arrow24313f" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#24313f" stroke-width="2"/></marker>
+<marker id="arrow6b9c7c" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#6b9c7c" stroke-width="2"/></marker>
+<marker id="arrow718ec4" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#718ec4" stroke-width="2"/></marker>
+<marker id="arrow9a7ac5" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#9a7ac5" stroke-width="2"/></marker>
+<marker id="arrowc89b58" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#c89b58" stroke-width="2"/></marker>
+<marker id="arrowc7837b" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#c7837b" stroke-width="2"/></marker>
+<marker id="arrow8995a3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#8995a3" stroke-width="2"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="white"/>
+<text x="64" y="70" font-family="Arial, Helvetica, sans-serif" font-size="38" fill="#24313f" text-anchor="start" font-weight="700">
+<tspan x="64" dy="0">Backend production workflow</tspan>
+</text>
+<text x="64" y="112" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#5c6b7a" text-anchor="start" font-weight="400">
+<tspan x="64" dy="0">From an authorized website and creator brief to a reviewed, private video export.</tspan>
+</text>
+<text x="2216" y="72" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="end" font-weight="600">
+<tspan x="2216" dy="0">CITEREEL / 02</tspan>
+</text>
+<rect x="70" y="230" width="290" height="165" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="215.0" y="266" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="215.0" dy="0">Creator brief</tspan>
+</text>
+<text x="215.0" y="307" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="215.0" dy="0">Website, format, audience</tspan>
+<tspan x="215.0" dy="25">Capture authorization</tspan>
+</text>
+<path d="M360,312 L440,312" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="440" y="230" width="290" height="165" rx="6" fill="#edf3ff" stroke="#718ec4" stroke-width="2"/>
+<text x="585.0" y="266" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="585.0" dy="0">Authenticated API</tspan>
+</text>
+<text x="585.0" y="307" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="585.0" dy="0">Validate request + ownership</tspan>
+<tspan x="585.0" dy="25">Persist idempotent job</tspan>
+</text>
+<path d="M730,312 L810,312" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="810" y="230" width="290" height="165" rx="6" fill="#edf3ff" stroke="#718ec4" stroke-width="2"/>
+<text x="955.0" y="266" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="955.0" dy="0">Queue + dispatcher</tspan>
+</text>
+<text x="955.0" y="307" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="955.0" dy="0">SQS message</tspan>
+<tspan x="955.0" dy="25">Lambda launches ECS task</tspan>
+</text>
+<path d="M1100,312 L1180,312" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="1180" y="230" width="290" height="165" rx="6" fill="#edf3ff" stroke="#718ec4" stroke-width="2"/>
+<text x="1325.0" y="266" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1325.0" dy="0">Fargate worker</tspan>
+</text>
+<text x="1325.0" y="307" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1325.0" dy="0">Claim active attempt</tspan>
+<tspan x="1325.0" dy="25">Renew job lease</tspan>
+</text>
+<path d="M1470,312 L1550,312" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="1550" y="230" width="290" height="165" rx="6" fill="#fff7e6" stroke="#c89b58" stroke-width="2"/>
+<text x="1695.0" y="266" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1695.0" dy="0">Inspect sources</tspan>
+</text>
+<text x="1695.0" y="307" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1695.0" dy="0">Bounded public-page fetch</tspan>
+<tspan x="1695.0" dy="25">Save evidence</tspan>
+</text>
+<path d="M1840,312 L1920,312" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="1920" y="230" width="290" height="165" rx="6" fill="#f2ecfb" stroke="#9a7ac5" stroke-width="2"/>
+<text x="2065.0" y="266" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="2065.0" dy="0">AgentCore + Strands</tspan>
+</text>
+<text x="2065.0" y="307" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="2065.0" dy="0">Reason over evidence</tspan>
+<tspan x="2065.0" dy="25">Save plan + claim ledger</tspan>
+</text>
+<path d="M2065,395 L2065,462 L215,462 L215,540" fill="none" stroke="#6b9c7c" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow6b9c7c)"/>
+<rect x="902.0" y="429" width="476" height="28" rx="0" fill="white" stroke="none" stroke-width="0"/>
+<text x="1140" y="449" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#6b9c7c" text-anchor="middle" font-weight="400">
+<tspan x="1140" dy="0">Validated storyboard; pause for creator review</tspan>
+</text>
+<rect x="70" y="540" width="290" height="170" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="215.0" y="576" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="215.0" dy="0">Review storyboard</tspan>
+</text>
+<text x="215.0" y="617" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="215.0" dy="0">Creator checks copy,</tspan>
+<tspan x="215.0" dy="25">narration and cited claims</tspan>
+</text>
+<path d="M360,625 L440,625" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="440" y="540" width="290" height="170" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="585.0" y="576" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="585.0" dy="0">Approve + requeue</tspan>
+</text>
+<text x="585.0" y="617" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="585.0" dy="0">New attempt</tspan>
+<tspan x="585.0" dy="25">Resume existing plan</tspan>
+</text>
+<path d="M730,625 L810,625" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="810" y="540" width="290" height="170" rx="6" fill="#fff7e6" stroke="#c89b58" stroke-width="2"/>
+<text x="955.0" y="576" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="955.0" dy="0">Capture or reuse</tspan>
+</text>
+<text x="955.0" y="617" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="955.0" dy="0">Playwright scene recordings</tspan>
+<tspan x="955.0" dy="25">S3 checkpoints + hashes</tspan>
+</text>
+<path d="M1100,625 L1180,625" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="1180" y="540" width="290" height="170" rx="6" fill="#fff7e6" stroke="#c89b58" stroke-width="2"/>
+<text x="1325.0" y="576" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1325.0" dy="0">Narrate</tspan>
+</text>
+<text x="1325.0" y="617" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1325.0" dy="0">Amazon Polly</tspan>
+<tspan x="1325.0" dy="25">Scene speech tracks</tspan>
+</text>
+<path d="M1470,625 L1550,625" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="1550" y="540" width="290" height="170" rx="6" fill="#edf3ff" stroke="#718ec4" stroke-width="2"/>
+<text x="1695.0" y="576" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1695.0" dy="0">Compose + validate</tspan>
+</text>
+<text x="1695.0" y="617" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1695.0" dy="0">FFmpeg / ffprobe</tspan>
+<tspan x="1695.0" dy="25">Captions, media QA, SHA-256</tspan>
+</text>
+<path d="M1840,625 L1920,625" fill="none" stroke="#24313f" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow24313f)"/>
+<rect x="1920" y="540" width="290" height="170" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="2065.0" y="576" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="2065.0" dy="0">Save private export</tspan>
+</text>
+<text x="2065.0" y="617" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="2065.0" dy="0">Versioned S3 artifacts</tspan>
+<tspan x="2065.0" dy="25">State: ready_for_review</tspan>
+</text>
+<text x="215" y="765" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="215" dy="0">Worker exits while awaiting approval.</tspan>
+</text>
+<text x="953" y="765" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="953" dy="0">Unchanged recordings are reused.</tspan>
+</text>
+<path d="M2065,710 L2065,888" fill="none" stroke="#6b9c7c" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow6b9c7c)"/>
+<rect x="1987.0" y="822" width="156" height="28" rx="0" fill="white" stroke="none" stroke-width="0"/>
+<text x="2065" y="842" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#6b9c7c" text-anchor="middle" font-weight="400">
+<tspan x="2065" dy="0">Private access</tspan>
+</text>
+<rect x="1875" y="890" width="355" height="195" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="2052.5" y="926" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="2052.5" dy="0">Creator review / download</tspan>
+</text>
+<text x="2052.5" y="967" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="2052.5" dy="0">Playback, export approval</tspan>
+<tspan x="2052.5" dy="25">and presigned downloads</tspan>
+<tspan x="2052.5" dy="25">No automatic publication</tspan>
+</text>
+<rect x="70" y="850" width="1730" height="345" rx="6" fill="#fbfcfd" stroke="#d9e0e6" stroke-width="2"/>
+<text x="100" y="893" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#24313f" text-anchor="start" font-weight="600">
+<tspan x="100" dy="0">Failure and retry path</tspan>
+</text>
+<rect x="100" y="925" width="350" height="170" rx="6" fill="#fff0ee" stroke="#c7837b" stroke-width="2"/>
+<text x="275.0" y="961" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="275.0" dy="0">Task stop / DLQ</tspan>
+</text>
+<text x="275.0" y="1002" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="275.0" dy="0">EventBridge or</tspan>
+<tspan x="275.0" dy="25">exhausted queue delivery</tspan>
+</text>
+<path d="M450,1010 L525,1010" fill="none" stroke="#8995a3" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow8995a3)" stroke-dasharray="8 6"/>
+<rect x="525" y="925" width="350" height="170" rx="6" fill="#edf3ff" stroke="#718ec4" stroke-width="2"/>
+<text x="700.0" y="961" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="700.0" dy="0">Recovery Lambda</tspan>
+</text>
+<text x="700.0" y="1002" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="700.0" dy="0">Fence by attempt</tspan>
+<tspan x="700.0" dy="25">Mark job blocked</tspan>
+</text>
+<path d="M875,1010 L950,1010" fill="none" stroke="#8995a3" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow8995a3)" stroke-dasharray="8 6"/>
+<rect x="950" y="925" width="350" height="170" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="1125.0" y="961" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1125.0" dy="0">Creator retries</tspan>
+</text>
+<text x="1125.0" y="1002" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1125.0" dy="0">Explicit retry</tspan>
+<tspan x="1125.0" dy="25">New queued attempt</tspan>
+</text>
+<path d="M1300,1010 L1375,1010" fill="none" stroke="#8995a3" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow8995a3)" stroke-dasharray="8 6"/>
+<rect x="1375" y="925" width="350" height="170" rx="6" fill="#fff7e6" stroke="#c89b58" stroke-width="2"/>
+<text x="1550.0" y="961" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1550.0" dy="0">Resume safely</tspan>
+</text>
+<text x="1550.0" y="1002" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1550.0" dy="0">Restore hashed checkpoints</tspan>
+<tspan x="1550.0" dy="25">Preserve prior exports</tspan>
+</text>
+<text x="100" y="1152" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#5c6b7a" text-anchor="start" font-weight="400">
+<tspan x="100" dy="0">DynamoDB stores job state, attempts, approvals and receipts throughout the workflow.</tspan>
+</text>
+<path d="M64,1266 H2216" stroke="#d9e0e6"/>
+<text x="64" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="start" font-weight="400">
+<tspan x="64" dy="0">Default review-enabled path shown. Automatic capture may skip the plan pause only when creator-authorized and no claims need review.</tspan>
+<tspan x="64" dy="27">Source: worker/runner.py, agent/remote.py, API/main.py, infra/dispatcher.py and infra/recovery.py.</tspan>
+</text>
+</svg>

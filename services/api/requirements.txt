@@ -1,0 +1,2 @@
+# The API imports the shared production contracts and worker safety boundary.
+-r ../../requirements.txt

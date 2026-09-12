@@ -1,0 +1,12 @@
+FROM public.ecr.aws/docker/library/python:3.12-slim-bookworm
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt 'aws-opentelemetry-distro>=0.18.0,<1.0'
+COPY services ./services
+ENV PYTHONPATH=/app/services/api/src:/app/services/agent/src:/app/services/worker/src \
+    LAUNCHPAD_DATA_DIR=/tmp/launchpad-data LAUNCHPAD_STORE=dynamodb \
+    LAUNCHPAD_LOCAL_MODE=false PYTHONUNBUFFERED=1 \
+    OTEL_SERVICE_NAME=launchpad-concierge OTEL_PYTHON_DISTRO=aws_distro \
+    OTEL_PYTHON_CONFIGURATOR=aws_configurator AGENT_OBSERVABILITY_ENABLED=true
+EXPOSE 8080
+CMD ["opentelemetry-instrument", "python", "-m", "uvicorn", "launchpad_agent.runtime:app", "--host", "0.0.0.0", "--port", "8080"]

@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1160" viewBox="0 0 2200 1160" role="img" aria-labelledby="title description">
+<title id="title">Strands agent reasoning and tool loop</title><desc id="description">One evidence-grounded planning agent, hosted in Amazon Bedrock AgentCore Runtime.</desc>
+<defs>
+<marker id="arrow24313f" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#24313f" stroke-width="2"/></marker>
+<marker id="arrow6b9c7c" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#6b9c7c" stroke-width="2"/></marker>
+<marker id="arrow718ec4" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#718ec4" stroke-width="2"/></marker>
+<marker id="arrow9a7ac5" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#9a7ac5" stroke-width="2"/></marker>
+<marker id="arrowc89b58" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#c89b58" stroke-width="2"/></marker>
+<marker id="arrowc7837b" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#c7837b" stroke-width="2"/></marker>
+<marker id="arrow8995a3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#8995a3" stroke-width="2"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="white"/>
+<text x="64" y="70" font-family="Arial, Helvetica, sans-serif" font-size="38" fill="#24313f" text-anchor="start" font-weight="700">
+<tspan x="64" dy="0">Strands agent reasoning and tool loop</tspan>
+</text>
+<text x="64" y="112" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#5c6b7a" text-anchor="start" font-weight="400">
+<tspan x="64" dy="0">One evidence-grounded planning agent, hosted in Amazon Bedrock AgentCore Runtime.</tspan>
+</text>
+<text x="2136" y="72" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="end" font-weight="600">
+<tspan x="2136" dy="0">CITEREEL / 03</tspan>
+</text>
+<rect x="390" y="195" width="1430" height="495" rx="8" fill="none" stroke="#ad7fc4" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="420" y="238" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#568b77" text-anchor="start" font-weight="600">
+<tspan x="420" dy="0">Strands agent loop / launchpad_concierge</tspan>
+</text>
+<rect x="60" y="335" width="270" height="155" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="195.0" y="371" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="195.0" dy="0">Input + context</tspan>
+</text>
+<text x="195.0" y="412" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="195.0" dy="0">Creator brief, evidence</tspan>
+<tspan x="195.0" dy="25">Optional revision context</tspan>
+</text>
+<rect x="460" y="335" width="300" height="155" rx="6" fill="#f2ecfb" stroke="#9a7ac5" stroke-width="2"/>
+<text x="610.0" y="371" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="610.0" dy="0">Reasoning (LLM)</tspan>
+</text>
+<text x="610.0" y="412" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="610.0" dy="0">Amazon Bedrock</tspan>
+<tspan x="610.0" dy="25">Configured model</tspan>
+</text>
+<rect x="880" y="335" width="300" height="155" rx="6" fill="#edf3ff" stroke="#718ec4" stroke-width="2"/>
+<text x="1030.0" y="371" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1030.0" dy="0">Tool selection</tspan>
+</text>
+<text x="1030.0" y="412" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1030.0" dy="0">Choose a scoped tool</tspan>
+<tspan x="1030.0" dy="25">ProductionPolicy gate</tspan>
+</text>
+<rect x="1300" y="335" width="420" height="155" rx="6" fill="#fff7e6" stroke="#c89b58" stroke-width="2"/>
+<text x="1510.0" y="371" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1510.0" dy="0">Tool execution</tspan>
+</text>
+<text x="1510.0" y="412" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1510.0" dy="0">Return evidence, validation</tspan>
+<tspan x="1510.0" dy="25">result or a saved plan</tspan>
+</text>
+<rect x="1890" y="335" width="260" height="185" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="2020.0" y="371" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="2020.0" dy="0">Worker receives result</tspan>
+</text>
+<text x="2020.0" y="412" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="2020.0" dy="0">Validated storyboard</tspan>
+<tspan x="2020.0" dy="25">or human-decision pause</tspan>
+</text>
+<path d="M330,413 L460,413" fill="none" stroke="#6b9c7c" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow6b9c7c)"/>
+<path d="M760,413 L880,413" fill="none" stroke="#9a7ac5" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow9a7ac5)"/>
+<path d="M1180,413 L1300,413" fill="none" stroke="#718ec4" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow718ec4)"/>
+<path d="M1720,413 L1890,413" fill="none" stroke="#6b9c7c" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow6b9c7c)"/>
+<rect x="1776.0" y="375" width="56" height="28" rx="0" fill="white" stroke="none" stroke-width="0"/>
+<text x="1804" y="395" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#6b9c7c" text-anchor="middle" font-weight="400">
+<tspan x="1804" dy="0">Done</tspan>
+</text>
+<path d="M1510,490 L1510,604 L610,604 L610,490" fill="none" stroke="#c89b58" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrowc89b58)"/>
+<rect x="842.0" y="570" width="456" height="28" rx="0" fill="white" stroke="none" stroke-width="0"/>
+<text x="1070" y="590" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#c89b58" text-anchor="middle" font-weight="400">
+<tspan x="1070" dy="0">Tool results and validation errors feed back</tspan>
+</text>
+<text x="420" y="659" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#5c6b7a" text-anchor="start" font-weight="400">
+<tspan x="420" dy="0">Stop for a human decision or when execution limits are reached.</tspan>
+</text>
+<text x="60" y="772" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#24313f" text-anchor="start" font-weight="600">
+<tspan x="60" dy="0">Four scoped tools</tspan>
+</text>
+<rect x="60" y="810" width="505" height="155" rx="6" fill="#edf3ff" stroke="#718ec4" stroke-width="2"/>
+<text x="312.5" y="846" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="312.5" dy="0">get_production_brief</tspan>
+</text>
+<text x="312.5" y="887" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="312.5" dy="0">Read format, audience, duration</tspan>
+<tspan x="312.5" dy="25">and the creator&#x27;s call to action.</tspan>
+</text>
+<rect x="595" y="810" width="505" height="155" rx="6" fill="#fff7e6" stroke="#c89b58" stroke-width="2"/>
+<text x="847.5" y="846" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="847.5" dy="0">inspect_authorized_site</tspan>
+</text>
+<text x="847.5" y="887" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="847.5" dy="0">Read inspected site evidence;</tspan>
+<tspan x="847.5" dy="25">page content is untrusted data.</tspan>
+</text>
+<rect x="1130" y="810" width="505" height="155" rx="6" fill="#f2ecfb" stroke="#9a7ac5" stroke-width="2"/>
+<text x="1382.5" y="846" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1382.5" dy="0">submit_storyboard</tspan>
+</text>
+<text x="1382.5" y="887" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1382.5" dy="0">Validate schema, sources and copy;</tspan>
+<tspan x="1382.5" dy="25">save the plan and claim ledger.</tspan>
+</text>
+<rect x="1665" y="810" width="505" height="155" rx="6" fill="#eaf5ed" stroke="#6b9c7c" stroke-width="2"/>
+<text x="1917.5" y="846" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#24313f" text-anchor="middle" font-weight="600">
+<tspan x="1917.5" dy="0">request_human_decision</tspan>
+</text>
+<text x="1917.5" y="887" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="middle" font-weight="400">
+<tspan x="1917.5" dy="0">Record missing support or ambiguity;</tspan>
+<tspan x="1917.5" dy="25">set a pending human decision.</tspan>
+</text>
+<path d="M64,1056 H2136" stroke="#d9e0e6"/>
+<text x="64" y="1090" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5c6b7a" text-anchor="start" font-weight="400">
+<tspan x="64" dy="0">Planning limits: 8 turns, 45,000 total tokens, 10,000 output tokens and a maximum of 10 tool calls.</tspan>
+<tspan x="64" dy="27">Source: services/agent/src/launchpad_agent/concierge.py, policies.py and runtime.py.</tspan>
+</text>
+</svg>

@@ -1,0 +1,8 @@
+.env*
+.venv
+.next
+node_modules
+.launchpad-data
+artifacts
+.git
+__pycache__

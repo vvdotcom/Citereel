@@ -1,0 +1,26 @@
+[
+  {
+    "file": "01-aws-full-stack.svg",
+    "textElements": 61,
+    "embeddedIcons": 17,
+    "clipped": []
+  },
+  {
+    "file": "02-backend-production-workflow.svg",
+    "textElements": 44,
+    "embeddedIcons": 0,
+    "clipped": []
+  },
+  {
+    "file": "03-strands-agent-loop.svg",
+    "textElements": 27,
+    "embeddedIcons": 0,
+    "clipped": []
+  },
+  {
+    "file": "04-agent-policy-hooks.svg",
+    "textElements": 34,
+    "embeddedIcons": 0,
+    "clipped": []
+  }
+]

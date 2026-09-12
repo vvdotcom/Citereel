@@ -1,0 +1,886 @@
+{
+  "verified_at": "2026-09-09T23:23:14.936006+00:00",
+  "job_id": "lp_7296bbbf86634eca",
+  "runtime": "Bedrock AgentCore + Strands",
+  "model": "Amazon Nova Lite",
+  "duration_seconds": 30.043,
+  "width": 2560,
+  "height": 1440,
+  "export_sha256": "3b59da6c4e975d3793203bf7002372d1e0e973b60117604cf687b8ab763b4137",
+  "video_url": "/verification/northstar-cloud-demo.mp4",
+  "receipt_url": "/verification/cloud-receipt.json",
+  "checks": [
+    {
+      "name": "Cloud execution",
+      "result": "passed",
+      "evidence": "Public HTTPS API \u2192 SQS \u2192 Fargate \u2192 AgentCore / Strands / Bedrock \u2192 human approval \u2192 browser capture \u2192 Polly \u2192 MP4 \u2192 S3. Correlated service logs are included in the receipt."
+    },
+    {
+      "name": "Actual AI revision",
+      "result": "passed",
+      "evidence": "AgentCore rewrote the previous storyboard for founders. Both script versions and the session identifier are retained."
+    },
+    {
+      "name": "Policy enforcement",
+      "result": "passed",
+      "evidence": "1 invalid storyboard submission(s) were rejected before acceptance. Before/after tool decisions and approval receipts are retained."
+    },
+    {
+      "name": "Interrupted worker recovery",
+      "result": "passed",
+      "evidence": "Stopped attempt 4 during rendering. EventBridge marked it blocked; the saved script and the prior downloadable MP4 remained intact. Retry attempt 5 completed."
+    },
+    {
+      "name": "Footage preservation",
+      "result": "passed",
+      "evidence": "The retry restored 4 S3-checkpointed clips and recorded 0 new clips. Checkpoint hashes were verified before reuse."
+    },
+    {
+      "name": "Media integrity",
+      "result": "passed",
+      "evidence": "Downloaded the S3 export through the authenticated API and independently matched SHA-256 3b59da6c4e975d3793203bf7002372d1e0e973b60117604cf687b8ab763b4137."
+    },
+    {
+      "name": "Observability",
+      "result": "logs verified; span export incomplete",
+      "evidence": "Worker, dispatcher, recovery and AgentCore logs correlate by job ID. The operations dashboard is deployed. ADOT span export returned HTTP 400; account-wide CloudWatch transaction-search configuration was not changed."
+    },
+    {
+      "name": "Public website production",
+      "result": "passed",
+      "evidence": "Production lp_08158116daa64d6c inspected the public AWS documentation, planned through AgentCore, paused for script review, captured six browser scenes, narrated with Polly and saved its verified MP4 to S3. An initial connection timeout recovered after the bounded network fix."
+    }
+  ],
+  "policy_receipts": [
+    {
+      "action": "storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Authorized brief; bounded model and tool calls; evidence validation required",
+      "at": 1788995003.299742,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995003.3993964,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995004.1125937,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995004.1315482,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995004.175583,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995004.1933534,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995004.2077656,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995009.4319146,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995009.4696298,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995009.4870703,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995010.1027074,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "awaiting_human",
+      "detail": "Review the storyboard and its cited evidence",
+      "at": 1788995010.1390681,
+      "attempt": 1,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "16e8e2534d5a7aeaea1a2f13fe1dd3197c118d47ca9aad401138a63aa9ef30fb"
+    },
+    {
+      "action": "approve_plan",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Owner, current version and allowed state verified; human decision persisted",
+      "at": 1788995049.3025682,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Approved plan or creator-authorized automatic capture; evidence attribution checked",
+      "at": 1788995092.0083292,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 1: bounded actions on inspected page overview",
+      "at": 1788995092.0478065,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 1: recording and capture receipts saved",
+      "at": 1788995099.7613196,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 2: bounded actions on inspected page overview",
+      "at": 1788995099.7841375,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 2: recording and capture receipts saved",
+      "at": 1788995107.0226932,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 3: bounded actions on inspected page overview",
+      "at": 1788995107.046598,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 3: recording and capture receipts saved",
+      "at": 1788995114.4031708,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 4: bounded actions on inspected page evidence",
+      "at": 1788995114.426617,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 4: recording and capture receipts saved",
+      "at": 1788995121.429064,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 5: bounded actions on inspected page evidence",
+      "at": 1788995121.4505184,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 5: recording and capture receipts saved",
+      "at": 1788995128.5745254,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 6: bounded actions on inspected page decisions",
+      "at": 1788995128.5968816,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 6: recording and capture receipts saved",
+      "at": 1788995135.8322272,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Validated storyboard; Polly narration; duration and media checks before export",
+      "at": 1788995135.871955,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995186.118261,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "save_export",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Save private artifacts only after media QA passes",
+      "at": 1788995186.1332097,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "save_export",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995189.1662912,
+      "attempt": 2,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "c8f7c703c27ba35294a9e015bc1c576c815714df8bbd01c765ea60c0df600e2f"
+    },
+    {
+      "action": "storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Authorized brief; bounded model and tool calls; evidence validation required",
+      "at": 1788995577.2503197,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995578.2390974,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995579.3670616,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995579.3952775,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "inspect_authorized_site",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995579.4444168,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "get_production_brief",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995579.4810178,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995579.507123,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995581.868972,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "storyboard_validation",
+      "phase": "after",
+      "outcome": "blocked",
+      "detail": "1 validation error for Storyboard\nscenes.3.source_ids\n  List should have at least 1 item after validation, not 0 [type=too_short, input_value=[], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.13/v/too_short",
+      "at": 1788995581.90496,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "blocked",
+      "detail": "Tool did not satisfy its postcondition",
+      "at": 1788995581.9243507,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995582.023955,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scoped tool; authorization, prerequisite order and call budget checked",
+      "at": 1788995584.4172096,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": null
+    },
+    {
+      "action": "submit_storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Tool postcondition verified",
+      "at": 1788995584.4953158,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "model_call",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Maximum 8 turns and 45,000 total tokens; cancellation checked",
+      "at": 1788995584.5209198,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "storyboard",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995585.4744036,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "awaiting_human",
+      "detail": "Review the storyboard and its cited evidence",
+      "at": 1788995585.501548,
+      "attempt": 3,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "approve_plan",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Owner, current version and allowed state verified; human decision persisted",
+      "at": 1788995660.7054183,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Approved plan or creator-authorized automatic capture; evidence attribution checked",
+      "at": 1788995704.3076234,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 1: reused matching capture with provenance",
+      "at": 1788995704.651381,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 2: reused matching capture with provenance",
+      "at": 1788995704.9258964,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 3: reused matching capture with provenance",
+      "at": 1788995705.1171322,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Scene 4: bounded actions on inspected page overview",
+      "at": 1788995705.145181,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_scene",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 4: recording and capture receipts saved",
+      "at": 1788995717.9932349,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Validated storyboard; Polly narration; duration and media checks before export",
+      "at": 1788995718.0213957,
+      "attempt": 4,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "worker_recovery",
+      "phase": "after",
+      "outcome": "blocked",
+      "detail": "The cloud worker stopped before completion. Saved storyboard and S3 recordings are preserved. Retry to resume (maximum three retries).",
+      "at": 1788995786.9349778,
+      "attempt": 4,
+      "policy_version": "2026-09-09"
+    },
+    {
+      "action": "retry",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Owner, current version and allowed state verified; human decision persisted",
+      "at": 1788995797.8799052,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "capture_approval",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Approved plan or creator-authorized automatic capture; evidence attribution checked",
+      "at": 1788995842.7311637,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 1: reused matching capture with provenance",
+      "at": 1788995842.9978158,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 2: reused matching capture with provenance",
+      "at": 1788995843.1957214,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 3: reused matching capture with provenance",
+      "at": 1788995843.4355254,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "reuse_recording",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Scene 4: reused matching capture with provenance",
+      "at": 1788995843.6488597,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Validated storyboard; Polly narration; duration and media checks before export",
+      "at": 1788995843.6799672,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "narrate_render_qa",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995907.1541424,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "save_export",
+      "phase": "before",
+      "outcome": "passed",
+      "detail": "Save private artifacts only after media QA passes",
+      "at": 1788995907.1739817,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    },
+    {
+      "action": "save_export",
+      "phase": "after",
+      "outcome": "passed",
+      "detail": "Completed and persisted",
+      "at": 1788995908.429087,
+      "attempt": 5,
+      "policy_version": "2026-09-09",
+      "plan_sha256": "7d68c4ffc30d2f40e21cbbdbc9d44c1e5c6594c0545035561928a2d54e509300"
+    }
+  ],
+  "public_example": {
+    "job_id": "lp_08158116daa64d6c",
+    "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html",
+    "video_url": "/verification/amazon-bedrock-demo.mp4",
+    "qa": {
+      "duration_seconds": 30.043,
+      "width": 2560,
+      "height": 1440,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "sha256": "7a96100c5d274b981a17faf7cdcd6f8c774ba4b40a20c41072b56551cfd22e83",
+      "bytes": 19719384,
+      "product_name": "Amazon Bedrock",
+      "template": "amazon-circuit-reference-v2-footage-first",
+      "video_border": "shared-tablet-bezel",
+      "browser_content_zoom": 1.4,
+      "camera_motion": "1x to 1.22x to 1x; first 3 seconds unzoomed",
+      "camera_anchor": "top-left",
+      "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
+      "recorded_clicks": 2,
+      "heading_font": "Roboto Mono Bold",
+      "footage_corner_radius": 36,
+      "scene_layouts": [
+        {
+          "scene": 1,
+          "layout": "circuit-cover",
+          "reference_image": "temp1.jpg",
+          "header": "Amazon Bedrock",
+          "items": [],
+          "source_ids": [
+            "source-1"
+          ]
+        },
+        {
+          "scene": 2,
+          "layout": "chapter-rails",
+          "reference_image": "temp2.jpg",
+          "header": "Supported Models",
+          "items": [],
+          "source_ids": [
+            "source-1"
+          ]
+        },
+        {
+          "scene": 3,
+          "layout": "image-split",
+          "reference_image": "temp3.jpg",
+          "header": "API Support",
+          "items": [],
+          "source_ids": [
+            "source-1",
+            "source-3"
+          ]
+        },
+        {
+          "scene": 4,
+          "layout": "legend-list",
+          "reference_image": "temp4.jpg",
+          "header": "Quickstart Guide",
+          "items": [
+            {
+              "title": "Supported Models",
+              "copy": "Over 100 foundation models",
+              "source_ids": [
+                "source-1"
+              ]
+            },
+            {
+              "title": "API Support",
+              "copy": "Multiple API options",
+              "source_ids": [
+                "source-1",
+                "source-3"
+              ]
+            },
+            {
+              "title": "Quickstart Guide",
+              "copy": "Get started easily",
+              "source_ids": [
+                "source-3"
+              ]
+            }
+          ],
+          "source_ids": [
+            "source-3"
+          ]
+        },
+        {
+          "scene": 5,
+          "layout": "tablet-demo",
+          "reference_image": "temp5.jpg",
+          "header": "Model Availability",
+          "items": [],
+          "source_ids": [
+            "source-2"
+          ]
+        },
+        {
+          "scene": 6,
+          "layout": "circuit-cover",
+          "reference_image": "temp1.jpg",
+          "header": "Explore More",
+          "items": [],
+          "source_ids": [
+            "source-1"
+          ]
+        }
+      ],
+      "capture_dimensions": [
+        {
+          "width": 2240,
+          "height": 848
+        },
+        {
+          "width": 1984,
+          "height": 816
+        },
+        {
+          "width": 1792,
+          "height": 1000
+        },
+        {
+          "width": 1744,
+          "height": 864
+        },
+        {
+          "width": 1760,
+          "height": 912
+        },
+        {
+          "width": 2240,
+          "height": 848
+        }
+      ],
+      "captions": "Approximate word highlighting (proportional timings)",
+      "voices": [
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 1,
+          "original_seconds": 6.6,
+          "target_seconds": 5.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 2,
+          "original_seconds": 5.016,
+          "target_seconds": 5.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 3,
+          "original_seconds": 6.48,
+          "target_seconds": 5.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 4,
+          "original_seconds": 3.336,
+          "target_seconds": 5.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 5,
+          "original_seconds": 4.608,
+          "target_seconds": 5.0
+        },
+        {
+          "provider": "Amazon Polly",
+          "voice": "Joanna",
+          "scene": 6,
+          "original_seconds": 4.032,
+          "target_seconds": 5.0
+        }
+      ]
+    }
+  }
+}

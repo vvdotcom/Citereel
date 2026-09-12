@@ -1,0 +1,3 @@
+These are actual outputs from Launchpad's owned Northstar demo site. The product content is original; the example business is fictional. Browser capture and FFmpeg rendering are real. The presentation uses live Amazon Bedrock planning through Strands and Amazon Polly narration. The other formats use the explicitly selected deterministic fixture planner and Windows Speech. The landing page plays these recorded outputs; it does not generate them live.
+
+`manifest.json` records the source job ID, duration, resolution, codecs, voice provider and content hash for each MP4. Rebuild with `scripts/verify_pipeline.py`, then run `scripts/stage_examples.py`.

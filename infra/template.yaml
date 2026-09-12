@@ -1,0 +1,460 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Launchpad scale-to-zero web, API, queue, renderer, and artifact store.
+
+Parameters:
+  ApiImageUri:
+    Type: String
+    Description: ECR image URI built from Dockerfile.api.
+  WorkerImageUri:
+    Type: String
+    Description: ECR image URI built from Dockerfile.worker.
+  ArtifactRetentionDays:
+    Type: Number
+    Default: 7
+    MinValue: 1
+    MaxValue: 30
+  WorkerConcurrency:
+    Type: Number
+    Default: 2
+    MinValue: 1
+    MaxValue: 4
+  AgentRuntimeArn:
+    Type: String
+    Default: ''
+  DailyJobLimit:
+    Type: Number
+    Default: 20
+    MinValue: 1
+    MaxValue: 100
+
+Resources:
+  Artifacts:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: { SSEAlgorithm: AES256 }
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: expire-review-artifacts
+            Status: Enabled
+            ExpirationInDays: !Ref ArtifactRetentionDays
+
+  Jobs:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+        - AttributeName: owner
+          AttributeType: S
+        - AttributeName: created_at
+          AttributeType: N
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: OwnerCreatedIndex
+          KeySchema:
+            - AttributeName: owner
+              KeyType: HASH
+            - AttributeName: created_at
+              KeyType: RANGE
+          Projection: { ProjectionType: ALL }
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+      SSESpecification: { SSEEnabled: true }
+
+  DeadLetterQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      MessageRetentionPeriod: 1209600
+  RenderQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      VisibilityTimeout: 120
+      MessageRetentionPeriod: 86400
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt DeadLetterQueue.Arn
+        maxReceiveCount: 20
+
+  WorkerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      RetentionInDays: 7
+
+  ApiRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{ Effect: Allow, Principal: { Service: lambda.amazonaws.com }, Action: sts:AssumeRole }]
+      ManagedPolicyArns: [arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole]
+      Policies:
+        - PolicyName: launchpad-api-data
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [dynamodb:GetItem, dynamodb:PutItem, dynamodb:UpdateItem, dynamodb:DeleteItem, dynamodb:Query, dynamodb:TransactWriteItems]
+                Resource: [!GetAtt Jobs.Arn, !Sub '${Jobs.Arn}/index/*']
+              - Effect: Allow
+                Action: sqs:SendMessage
+                Resource: !GetAtt RenderQueue.Arn
+              - Effect: Allow
+                Action: s3:GetObject
+                Resource: !Sub '${Artifacts.Arn}/*'
+
+  PublicApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 10
+        ThrottlingRateLimit: 5
+
+  ApiRoute:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      ImageUri: !Ref ApiImageUri
+      Role: !GetAtt ApiRole.Arn
+      MemorySize: 1024
+      Timeout: 29
+      Environment:
+        Variables:
+          LAUNCHPAD_STORE: dynamodb
+          LAUNCHPAD_DYNAMODB_TABLE: !Ref Jobs
+          LAUNCHPAD_QUEUE_URL: !Ref RenderQueue
+          LAUNCHPAD_ARTIFACT_BUCKET: !Ref Artifacts
+          LAUNCHPAD_LOCAL_MODE: 'false'
+          LAUNCHPAD_SECURE_COOKIES: 'true'
+          LAUNCHPAD_DAILY_JOB_LIMIT: !Ref DailyJobLimit
+          LAUNCHPAD_WORKER_LOG_GROUP: !Ref WorkerLogGroup
+          LAUNCHPAD_DASHBOARD: !Sub '${AWS::StackName}-operations'
+      Events:
+        AnyRequest:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref PublicApi
+            Path: /{proxy+}
+            Method: ANY
+
+  Vpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.40.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+  GatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: { InternetGatewayId: !Ref InternetGateway, VpcId: !Ref Vpc }
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties: { VpcId: !Ref Vpc }
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: GatewayAttachment
+    Properties: { RouteTableId: !Ref PublicRouteTable, DestinationCidrBlock: 0.0.0.0/0, GatewayId: !Ref InternetGateway }
+  PublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties: { VpcId: !Ref Vpc, CidrBlock: 10.40.1.0/24, AvailabilityZone: !Select [0, !GetAZs ''], MapPublicIpOnLaunch: true }
+  PublicSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties: { VpcId: !Ref Vpc, CidrBlock: 10.40.2.0/24, AvailabilityZone: !Select [1, !GetAZs ''], MapPublicIpOnLaunch: true }
+  PublicSubnetARoute:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PublicRouteTable, SubnetId: !Ref PublicSubnetA }
+  PublicSubnetBRoute:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PublicRouteTable, SubnetId: !Ref PublicSubnetB }
+  WorkerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Outbound-only browser rendering worker
+      VpcId: !Ref Vpc
+      SecurityGroupEgress:
+        - { IpProtocol: tcp, FromPort: 80, ToPort: 80, CidrIp: 0.0.0.0/0 }
+        - { IpProtocol: tcp, FromPort: 443, ToPort: 443, CidrIp: 0.0.0.0/0 }
+        - { IpProtocol: udp, FromPort: 53, ToPort: 53, CidrIp: 0.0.0.0/0 }
+        - { IpProtocol: tcp, FromPort: 53, ToPort: 53, CidrIp: 0.0.0.0/0 }
+
+  WorkerExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{ Effect: Allow, Principal: { Service: ecs-tasks.amazonaws.com }, Action: sts:AssumeRole }]
+      ManagedPolicyArns: [arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy]
+  WorkerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{ Effect: Allow, Principal: { Service: ecs-tasks.amazonaws.com }, Action: sts:AssumeRole }]
+      Policies:
+        - PolicyName: launchpad-render-data-and-ai
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - { Effect: Allow, Action: [dynamodb:GetItem, dynamodb:UpdateItem, dynamodb:Query], Resource: [!GetAtt Jobs.Arn, !Sub '${Jobs.Arn}/index/*'] }
+              - { Effect: Allow, Action: [s3:PutObject, s3:GetObject], Resource: !Sub '${Artifacts.Arn}/*' }
+              - { Effect: Allow, Action: [bedrock-agentcore:InvokeAgentRuntime, bedrock-agentcore:StopRuntimeSession], Resource: !Sub 'arn:aws:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:runtime/launchpad_concierge*' }
+              - { Effect: Allow, Action: [bedrock:InvokeModel, bedrock:InvokeModelWithResponseStream], Resource: '*' }
+              - { Effect: Allow, Action: polly:SynthesizeSpeech, Resource: '*' }
+
+  Cluster:
+    Type: AWS::ECS::Cluster
+  WorkerTask:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: '2048'
+      Memory: '4096'
+      ExecutionRoleArn: !GetAtt WorkerExecutionRole.Arn
+      TaskRoleArn: !GetAtt WorkerRole.Arn
+      EphemeralStorage: { SizeInGiB: 30 }
+      ContainerDefinitions:
+        - Name: worker
+          Image: !Ref WorkerImageUri
+          Essential: true
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref WorkerLogGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: worker
+          Environment:
+            - { Name: LAUNCHPAD_STORE, Value: dynamodb }
+            - { Name: LAUNCHPAD_DYNAMODB_TABLE, Value: !Ref Jobs }
+            - { Name: LAUNCHPAD_ARTIFACT_BUCKET, Value: !Ref Artifacts }
+            - { Name: AWS_REGION, Value: !Ref AWS::Region }
+            - { Name: LAUNCHPAD_DAILY_JOB_LIMIT, Value: !Ref DailyJobLimit }
+            - { Name: LAUNCHPAD_AGENTCORE_ARN, Value: !Ref AgentRuntimeArn }
+            - { Name: LAUNCHPAD_WORKER_LOG_GROUP, Value: !Ref WorkerLogGroup }
+            - { Name: LAUNCHPAD_DASHBOARD, Value: !Sub '${AWS::StackName}-operations' }
+            - { Name: LAUNCHPAD_MAX_VIDEO_DURATION_SECONDS, Value: '180' }
+
+  DispatcherRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{ Effect: Allow, Principal: { Service: lambda.amazonaws.com }, Action: sts:AssumeRole }]
+      ManagedPolicyArns: [arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole]
+      Policies:
+        - PolicyName: run-only-launchpad-worker
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - { Effect: Allow, Action: ecs:RunTask, Resource: !Ref WorkerTask }
+              - { Effect: Allow, Action: [dynamodb:GetItem, dynamodb:PutItem, dynamodb:UpdateItem, dynamodb:DeleteItem], Resource: !GetAtt Jobs.Arn }
+              - { Effect: Allow, Action: iam:PassRole, Resource: [!GetAtt WorkerExecutionRole.Arn, !GetAtt WorkerRole.Arn] }
+              - { Effect: Allow, Action: [sqs:ReceiveMessage, sqs:DeleteMessage, sqs:GetQueueAttributes, sqs:ChangeMessageVisibility], Resource: !GetAtt RenderQueue.Arn }
+
+  Dispatcher:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: dispatcher.handler
+      Runtime: python3.12
+      Timeout: 30
+      Role: !GetAtt DispatcherRole.Arn
+      Environment:
+        Variables:
+          ECS_CLUSTER_ARN: !GetAtt Cluster.Arn
+          WORKER_TASK_DEFINITION_ARN: !Ref WorkerTask
+          WORKER_SUBNET_IDS: !Join [',', [!Ref PublicSubnetA, !Ref PublicSubnetB]]
+          WORKER_SECURITY_GROUP_ID: !Ref WorkerSecurityGroup
+          LAUNCHPAD_DYNAMODB_TABLE: !Ref Jobs
+          WORKER_CONCURRENCY: !Ref WorkerConcurrency
+      Events:
+        Queue:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt RenderQueue.Arn
+            BatchSize: 1
+            FunctionResponseTypes: [ReportBatchItemFailures]
+            ScalingConfig: { MaximumConcurrency: !Ref WorkerConcurrency }
+
+  RecoveryRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{ Effect: Allow, Principal: { Service: lambda.amazonaws.com }, Action: sts:AssumeRole }]
+      ManagedPolicyArns: [arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole]
+      Policies:
+        - PolicyName: recover-launchpad-jobs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - { Effect: Allow, Action: [dynamodb:GetItem, dynamodb:UpdateItem, dynamodb:DeleteItem], Resource: !GetAtt Jobs.Arn }
+              - { Effect: Allow, Action: [sqs:ReceiveMessage, sqs:DeleteMessage, sqs:GetQueueAttributes], Resource: !GetAtt DeadLetterQueue.Arn }
+  Recovery:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: recovery.handler
+      Runtime: python3.12
+      Timeout: 30
+      Role: !GetAtt RecoveryRole.Arn
+      Environment:
+        Variables:
+          LAUNCHPAD_DYNAMODB_TABLE: !Ref Jobs
+          WORKER_CONCURRENCY: !Ref WorkerConcurrency
+      Events:
+        StoppedTask:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source: [aws.ecs]
+              detail-type: [ECS Task State Change]
+              detail:
+                clusterArn: [!GetAtt Cluster.Arn]
+                lastStatus: [STOPPED]
+        DeadQueue:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt DeadLetterQueue.Arn
+            BatchSize: 1
+
+  MonitorRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{ Effect: Allow, Principal: { Service: lambda.amazonaws.com }, Action: sts:AssumeRole }]
+      ManagedPolicyArns: [arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole]
+      Policies:
+        - PolicyName: monitor-authorized-productions
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - { Effect: Allow, Action: [dynamodb:Scan, dynamodb:UpdateItem], Resource: !GetAtt Jobs.Arn }
+              - { Effect: Allow, Action: sqs:SendMessage, Resource: !GetAtt RenderQueue.Arn }
+  Monitor:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: monitor.handler
+      Runtime: python3.12
+      Timeout: 30
+      Role: !GetAtt MonitorRole.Arn
+      Environment:
+        Variables:
+          LAUNCHPAD_DYNAMODB_TABLE: !Ref Jobs
+          LAUNCHPAD_QUEUE_URL: !Ref RenderQueue
+      Events:
+        ScheduledSourceCheck:
+          Type: Schedule
+          Properties: { Schedule: rate(6 hours), Enabled: true }
+
+  OperationsDashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: !Sub '${AWS::StackName}-operations'
+      DashboardBody: !Sub |
+        {"widgets":[
+          {"type":"metric","x":0,"y":0,"width":12,"height":6,"properties":{"region":"${AWS::Region}","title":"API requests and errors","metrics":[["AWS/Lambda","Invocations","FunctionName","${ApiRoute}"],["AWS/Lambda","Errors","FunctionName","${ApiRoute}"]],"stat":"Sum","period":300}},
+          {"type":"metric","x":12,"y":0,"width":12,"height":6,"properties":{"region":"${AWS::Region}","title":"Waiting and dead-letter jobs","metrics":[["AWS/SQS","ApproximateNumberOfMessagesVisible","QueueName","${RenderQueue.QueueName}"],["AWS/SQS","ApproximateNumberOfMessagesVisible","QueueName","${DeadLetterQueue.QueueName}"]],"stat":"Maximum","period":300}},
+          {"type":"log","x":0,"y":6,"width":24,"height":8,"properties":{"region":"${AWS::Region}","title":"Production decisions and outcomes (filter job_id)","query":"SOURCE '${WorkerLogGroup}' | fields @timestamp, job_id, event, action, outcome, attempt | filter service = 'launchpad' | sort @timestamp desc | limit 50","view":"table"}}
+        ]}
+
+  WebBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+  WebAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub '${AWS::StackName}-web'
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+  StaticRouteRewrite:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: !Sub '${AWS::StackName}-routes'
+      AutoPublish: true
+      FunctionConfig:
+        Comment: Resolve Next static routes at the S3 origin.
+        Runtime: cloudfront-js-2.0
+      FunctionCode: |
+        function handler(event) {
+          var request = event.request;
+          var uri = request.uri;
+          if (uri.endsWith('/')) request.uri = uri + 'index.html';
+          else if (!uri.includes('.')) request.uri = uri + '/index.html';
+          return request;
+        }
+  WebDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: index.html
+        Origins:
+          - Id: web
+            DomainName: !GetAtt WebBucket.RegionalDomainName
+            S3OriginConfig: { OriginAccessIdentity: '' }
+            OriginAccessControlId: !Ref WebAccessControl
+          - Id: api
+            DomainName: !Sub '${PublicApi}.execute-api.${AWS::Region}.amazonaws.com'
+            CustomOriginConfig: { OriginProtocolPolicy: https-only, OriginSSLProtocols: [TLSv1.2] }
+        DefaultCacheBehavior:
+          TargetOriginId: web
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt StaticRouteRewrite.FunctionARN
+        CacheBehaviors:
+          - PathPattern: /v1/*
+            TargetOriginId: api
+            ViewerProtocolPolicy: https-only
+            AllowedMethods: [GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE]
+            CachedMethods: [GET, HEAD]
+            CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
+            OriginRequestPolicyId: b689b0a8-53d0-40ab-baf2-68738e2966ac
+  WebBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: cloudfront.amazonaws.com }
+            Action: s3:GetObject
+            Resource: !Sub '${WebBucket.Arn}/*'
+            Condition: { StringEquals: { 'AWS:SourceArn': !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${WebDistribution}' } }
+
+Outputs:
+  JobsTable: { Value: !Ref Jobs }
+  ArtifactBucket: { Value: !Ref Artifacts }
+  WorkerLogGroupName: { Value: !Ref WorkerLogGroup }
+  WebsiteUrl: { Value: !Sub 'https://${WebDistribution.DomainName}' }
+  WebBucketName: { Value: !Ref WebBucket }
+  ApiUrl: { Value: !Sub 'https://${PublicApi}.execute-api.${AWS::Region}.amazonaws.com/v1' }
+  ApiRepositoryHint: { Value: 'Create/push an API image, then provide ApiImageUri on deployment.' }
+  WorkerRepositoryHint: { Value: 'Create/push a worker image, then provide WorkerImageUri on deployment.' }

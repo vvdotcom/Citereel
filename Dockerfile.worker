@@ -1,0 +1,13 @@
+FROM public.ecr.aws/docker/library/python:3.12-bookworm
+WORKDIR /app
+RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt && python -m playwright install --with-deps chromium
+COPY services ./services
+COPY assets ./assets
+ENV PYTHONPATH=/app/services/api/src:/app/services/agent/src:/app/services/worker/src \
+    LAUNCHPAD_DATA_DIR=/tmp/launchpad-data \
+    LAUNCHPAD_STORE=dynamodb \
+    LAUNCHPAD_LOCAL_MODE=false \
+    LAUNCHPAD_VOICE=polly
+CMD ["python", "-m", "launchpad_worker.task"]

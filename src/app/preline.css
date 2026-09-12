@@ -1,0 +1,96 @@
+/* Preline UI + Tailwind, scoped to Citereel's existing Amazon palette.
+   Keep the existing application's reset; do not introduce a second preflight. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "preline/variants.css";
+@source "../";
+@source "../../node_modules/preline/dist/accordion.mjs";
+@plugin "@tailwindcss/forms" {
+  strategy: "class";
+}
+
+@theme {
+  --color-amazon-orange: #ff9900;
+  --color-amazon-orange-hover: #ffb84d;
+  --color-amazon-navy: #232f3e;
+  --color-amazon-canvas: #e3e8ed;
+  --color-amazon-panel: #f1f3f5;
+  --color-amazon-border: #9ba9b6;
+  --color-amazon-text: #f4f6f8;
+  --color-amazon-muted: #536575;
+}
+
+:root {
+  --lp-canvas: #e3e8ed;
+  --lp-panel: #f1f3f5;
+  --lp-raised: #ffffff;
+  --lp-border: #9ba9b6;
+  --lp-muted: #536575;
+}
+
+/* Shared Preline button and input recipes. Native controls keep React ownership. */
+.pl-button {
+  @apply inline-flex items-center justify-center gap-x-2 rounded-lg border border-transparent px-4 py-2.5 text-sm font-medium transition-colors disabled:opacity-50;
+  min-height: 44px;
+  text-decoration: none;
+}
+.pl-button-primary {
+  @apply bg-amazon-orange text-amazon-canvas hover:bg-amazon-orange-hover;
+}
+.pl-button-secondary {
+  @apply border-amazon-border bg-amazon-navy text-amazon-text hover:bg-amazon-panel;
+}
+.pl-button:focus-visible {
+  outline: 2px solid #ffb84d;
+  outline-offset: 3px;
+}
+.pl-disclosure {
+  border-top: 1px solid var(--lp-border);
+  min-width: 0;
+}
+.pl-disclosure .pl-disclosure-toggle {
+  @apply flex w-full items-center justify-between gap-x-3 py-4 text-left text-sm font-medium;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #e8edf2;
+  padding-inline: 0;
+}
+.pl-disclosure .pl-disclosure-toggle:hover {
+  background: transparent;
+  color: #ffb84d;
+}
+.pl-disclosure-toggle > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.pl-disclosure-toggle svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+.pl-disclosure-content {
+  overflow: hidden;
+  transition: height 150ms ease;
+}
+.pl-disclosure-content.hidden {
+  display: none;
+}
+.pl-disclosure-content > .pl-disclosure-body {
+  padding: 0 0 20px;
+}
+.pl-disclosure.active > .pl-disclosure-toggle {
+  color: #ffb84d;
+}
+.pl-disclosure.active > .pl-disclosure-toggle .pl-chevron {
+  transform: rotate(180deg);
+}
+.pl-disclosure p {
+  line-height: 1.7;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pl-disclosure-content {
+    transition: none;
+  }
+}
