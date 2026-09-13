@@ -166,7 +166,8 @@ def process(job, db=store, fixture=False):
             ),
         )
         (folder / "capture-events.json").write_text(json.dumps(events, indent=2), encoding="utf-8")
-        with checked_action(db, job_id, "narrate_render_qa", "Validated storyboard; Polly narration; duration and media checks before export"):
+        delivery = "silent output" if current["request"].get("narration_mode") == "silent" else "narration"
+        with checked_action(db, job_id, "narrate_render_qa", f"Validated storyboard; {delivery}; duration and media checks before export"):
             qa = render(db.get(job_id), folder, clips, check, lambda state, detail: db.stage(job_id, state, detail))
         relative_folder = str(folder.relative_to(db.root)).replace("\\", "/")
         with checked_action(db, job_id, "save_export", "Save private artifacts only after media QA passes"):

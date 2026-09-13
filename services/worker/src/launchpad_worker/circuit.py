@@ -34,6 +34,8 @@ def layout(request, index=0):
 
 def content_scale(request):
     # Static browser reflow keeps text readable without animated camera zoom.
+    if request.get("visual_style") == "cinematic":
+        return 1.0
     return 1.15 if request["orientation"] == "portrait" else 1.4
 
 

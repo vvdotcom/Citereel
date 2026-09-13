@@ -6,7 +6,12 @@ import { BrandMark } from "./brand-mark";
 import { apiEndpoint, apiFetch } from "@/lib/api";
 import { serviceMessage } from "@/lib/service-message";
 import "./workspace.css";
-import { PolicyReview, CloudTraceLinks, type PolicyReceipt, type Observability } from "./policy-review";
+import {
+  PolicyReview,
+  CloudTraceLinks,
+  type PolicyReceipt,
+  type Observability,
+} from "./policy-review";
 import { PrelineDisclosure } from "./preline-disclosure";
 import {
   WebsiteUpdates,
@@ -79,6 +84,7 @@ type Job = {
     duration_seconds: number;
     orientation: string;
     narration_voice?: "female" | "male";
+    narration_mode?: "voice" | "silent";
     brief: string;
     brand?: { name: string; primary_color: string };
   };
@@ -109,7 +115,11 @@ type Job = {
     inputTokens: number;
     outputTokens: number;
   };
-  monitor?: { enabled: boolean; interval_hours: number; next_check_at: number | null };
+  monitor?: {
+    enabled: boolean;
+    interval_hours: number;
+    next_check_at: number | null;
+  };
 };
 type Settings = {
   bedrock_configured: boolean;
@@ -164,32 +174,46 @@ const progressByStage: Record<string, number> = {
 
 function jobProgress(job: Job) {
   if (job.state === "blocked" || job.state === "failed") {
-    const previous = job.timeline.slice().reverse().find(
-      (entry) => !["blocked", "failed"].includes(entry.stage),
-    );
+    const previous = job.timeline
+      .slice()
+      .reverse()
+      .find((entry) => !["blocked", "failed"].includes(entry.stage));
     return progressByStage[previous?.stage ?? "queued"] ?? 2;
   }
   if (job.state === "capturing") {
     const detail = job.timeline.at(-1)?.detail ?? "";
     const match = detail.match(/recording (\d+) of (\d+)/i);
-    if (match) return 48 + Math.round((Number(match[1]) / Number(match[2])) * 20);
+    if (match)
+      return 48 + Math.round((Number(match[1]) / Number(match[2])) * 20);
   }
   return progressByStage[job.state] ?? 2;
 }
 
 function elapsed(job: Job) {
-  const finished = ["ready_for_review", "approved", "blocked", "failed", "cancelled"].includes(
-    job.state,
-  );
+  const finished = [
+    "ready_for_review",
+    "approved",
+    "blocked",
+    "failed",
+    "cancelled",
+  ].includes(job.state);
   const seconds = Math.max(
     0,
-    Math.round((finished ? job.updated_at : Date.now() / 1000) - job.created_at),
+    Math.round(
+      (finished ? job.updated_at : Date.now() / 1000) - job.created_at,
+    ),
   );
   const minutes = Math.floor(seconds / 60);
   return minutes ? `${minutes}m ${seconds % 60}s` : `${seconds}s`;
 }
 
-function JobProgress({ job, compact = false }: { job: Job; compact?: boolean }) {
+function JobProgress({
+  job,
+  compact = false,
+}: {
+  job: Job;
+  compact?: boolean;
+}) {
   const value = jobProgress(job);
   return (
     <div className={`lp-job-progress ${compact ? "compact" : ""}`}>
@@ -218,27 +242,66 @@ function JobReport({ job }: { job: Job }) {
       </header>
       <JobProgress job={job} />
       <p className="lp-job-current" role="status">
-        {serviceMessage(job.error || latest?.detail || "Waiting for the first saved update.")}
+        {serviceMessage(
+          job.error || latest?.detail || "Waiting for the first saved update.",
+        )}
       </p>
       <dl>
-        <div><dt>Job</dt><dd><code>{job.id}</code></dd></div>
-        <div><dt>Attempt</dt><dd>{job.attempt}</dd></div>
-        <div><dt>Elapsed</dt><dd>{elapsed(job)}</dd></div>
-        <div><dt>Last saved</dt><dd>{new Date(job.updated_at * 1000).toLocaleString()}</dd></div>
+        <div>
+          <dt>Job</dt>
+          <dd>
+            <code>{job.id}</code>
+          </dd>
+        </div>
+        <div>
+          <dt>Attempt</dt>
+          <dd>{job.attempt}</dd>
+        </div>
+        <div>
+          <dt>Elapsed</dt>
+          <dd>{elapsed(job)}</dd>
+        </div>
+        <div>
+          <dt>Last saved</dt>
+          <dd>{new Date(job.updated_at * 1000).toLocaleString()}</dd>
+        </div>
       </dl>
-      <details open={activeStates.includes(job.state) || ["blocked", "failed"].includes(job.state)}>
+      <details
+        open={
+          activeStates.includes(job.state) ||
+          ["blocked", "failed"].includes(job.state)
+        }
+      >
         <summary>Activity log ({job.timeline.length} saved updates)</summary>
-        <div className="lp-job-log" role="region" aria-label="Timestamped activity log" tabIndex={0}>
+        <div
+          className="lp-job-log"
+          role="region"
+          aria-label="Timestamped activity log"
+          tabIndex={0}
+        >
           <table>
-            <thead><tr><th>Time</th><th>Stage</th><th>Update</th></tr></thead>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Stage</th>
+                <th>Update</th>
+              </tr>
+            </thead>
             <tbody>
-              {job.timeline.slice().reverse().map((entry, index) => (
-                <tr key={`${entry.at}-${index}`}>
-                  <td><time>{new Date(entry.at * 1000).toLocaleTimeString()}</time></td>
-                  <td>{human(entry.stage)}</td>
-                  <td>{serviceMessage(entry.detail)}</td>
-                </tr>
-              ))}
+              {job.timeline
+                .slice()
+                .reverse()
+                .map((entry, index) => (
+                  <tr key={`${entry.at}-${index}`}>
+                    <td>
+                      <time>
+                        {new Date(entry.at * 1000).toLocaleTimeString()}
+                      </time>
+                    </td>
+                    <td>{human(entry.stage)}</td>
+                    <td>{serviceMessage(entry.detail)}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
@@ -303,12 +366,7 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
   const [reviewMark, setReviewMark] = useState("");
   const [search, setSearch] = useState("");
   const [tab, setTab] = useState<
-    | "preview"
-    | "storyboard"
-    | "claims"
-    | "sources"
-    | "trace"
-    | "receipts"
+    "preview" | "storyboard" | "claims" | "sources" | "trace" | "receipts"
   >("preview");
   const [draft, setDraft] = useState<Scene[] | null>(null);
   const [selectedAttempt, setSelectedAttempt] = useState<number | null>(null);
@@ -316,6 +374,8 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
   const [brandName, setBrandName] = useState("");
   const [brandColor, setBrandColor] = useState("#ff9900");
   const [format, setFormat] = useState("presentation");
+  const [narrationChoice, setNarrationChoice] = useState("female");
+  const [captionsEnabled, setCaptionsEnabled] = useState(true);
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
   const formRef = useRef<HTMLFormElement>(null);
   const job =
@@ -390,11 +450,14 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
         audience: data.get("audience"),
         duration_seconds: Number(data.get("duration")),
         tone: data.get("tone"),
-        narration_voice: data.get("narration_voice"),
+        narration_voice:
+          narrationChoice === "silent" ? "female" : narrationChoice,
+        narration_mode: narrationChoice === "silent" ? "silent" : "voice",
+        visual_style: data.get("visual_style"),
         format,
         orientation: data.get("orientation"),
         call_to_action: data.get("cta"),
-        captions: data.get("captions") === "on",
+        captions: narrationChoice !== "silent" && data.get("captions") === "on",
         zoom: false,
         review_plan: data.get("review") === "on",
         brand: {
@@ -513,7 +576,8 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
       <main className="lp-login">
         <section>
           <Link href="/" className="lp-brand">
-            <BrandMark />citereel
+            <BrandMark />
+            citereel
           </Link>
           <h1>Your next product story starts here.</h1>
           <p>
@@ -665,8 +729,8 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
             </button>
             {settings && !settings.bedrock_configured && (
               <p className="lp-inline-note">
-                AI generation is unavailable. Ask the workspace administrator
-                to configure Bedrock.
+                AI generation is unavailable. Ask the workspace administrator to
+                configure Bedrock.
               </p>
             )}
             <label>
@@ -689,6 +753,15 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
                 <option value="product">Product demo</option>
                 <option value="spotlight">Feature spotlight</option>
                 <option value="short">Short</option>
+              </select>
+            </label>
+            <label>
+              Visual style
+              <select name="visual_style" defaultValue="circuit">
+                <option value="circuit">Circuit presentation</option>
+                <option value="cinematic">
+                  Cinematic demo — animated titles
+                </option>
               </select>
             </label>
             <div className="lp-fields">
@@ -725,10 +798,15 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
             </label>
             <div className="lp-fields">
               <label>
-                Narrator
-                <select name="narration_voice" defaultValue="female">
+                Narration
+                <select
+                  name="narration_voice"
+                  value={narrationChoice}
+                  onChange={(event) => setNarrationChoice(event.target.value)}
+                >
                   <option value="female">Female (Ruth)</option>
                   <option value="male">Male (Matthew)</option>
+                  <option value="silent">Silent — add voiceover later</option>
                 </select>
               </label>
               <label>
@@ -773,7 +851,13 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
               </label>
             </div>
             <label className="lp-check">
-              <input name="captions" type="checkbox" defaultChecked />
+              <input
+                name="captions"
+                type="checkbox"
+                checked={narrationChoice !== "silent" && captionsEnabled}
+                onChange={(event) => setCaptionsEnabled(event.target.checked)}
+                disabled={narrationChoice === "silent"}
+              />
               Captions
             </label>
             <label className="lp-check">
@@ -894,8 +978,8 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
             </p>
             <h2>Storage</h2>
             <p>
-              Sources, storyboard decisions and export versions stay attached
-              to each production. Access requires your workspace session.
+              Sources, storyboard decisions and export versions stay attached to
+              each production. Access requires your workspace session.
             </p>
             <h2>About this build</h2>
             <p>
@@ -949,7 +1033,9 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
                           {human(j.request.format)} ·{" "}
                           {j.request.duration_seconds}s ·{" "}
                           {j.request.orientation} ·{" "}
-                          {human(j.request.narration_voice ?? "female")} voice
+                          {j.request.narration_mode === "silent"
+                            ? "Silent export"
+                            : `${human(j.request.narration_voice ?? "female")} voice`}
                         </p>
                         <span className="lp-status" data-state={j.state}>
                           {human(j.state)}
@@ -1093,8 +1179,7 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
                       {artifact.qa.voices[0]?.engine
                         ? ` · ${human(artifact.qa.voices[0].engine)} voice`
                         : ""}{" "}
-                      ·{" "}
-                      {artifact.qa.captions}
+                      · {artifact.qa.captions}
                     </p>
                     {["ready_for_review", "approved", "blocked"].includes(
                       job.state,
@@ -1483,8 +1568,10 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
                       <dd>{job.attempt}</dd>
                       <dt>Narrator</dt>
                       <dd>
-                        {artifact?.qa.voices[0]?.voice ??
-                          human(job.request.narration_voice ?? "female")}
+                        {job.request.narration_mode === "silent"
+                          ? "None — silent export"
+                          : (artifact?.qa.voices[0]?.voice ??
+                            human(job.request.narration_voice ?? "female"))}
                         {artifact?.qa.voices[0]?.engine
                           ? ` · ${human(artifact.qa.voices[0].engine)}`
                           : ""}
@@ -1543,40 +1630,56 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
           )}
           {job && <JobProgress job={job} compact />}
           <ol>
-            {stageNames.map((name, i) => {
-              const current = stageNames.indexOf(job?.state ?? "");
-              const done =
-                job?.timeline.some((t) => t.stage === name) &&
-                (!activeStates.includes(job.state) || current > i);
-              return (
-                <li
-                  key={name}
-                  className={
-                    done ? "done" : job?.state === name ? "current" : ""
-                  }
-                >
-                  <span>{done ? "✓" : i + 1}</span>
-                  <div>
-                    <b>{human(name)}</b>
-                    <p>
-                      {name === "planning"
-                        ? "Grounded script and scene direction"
-                        : name === "capturing"
-                          ? "Real product footage"
-                          : name === "quality_check"
-                            ? "Streams, dimensions and duration"
-                            : name === "narrating"
-                              ? "Voice synthesis and timing"
-                              : name === "rendering"
-                                ? "Video, captions and audio"
-                                : name === "researching"
-                                  ? "Official source evidence"
-                                  : "Authorized website"}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
+            {stageNames
+              .filter(
+                (name) =>
+                  name !== "narrating" ||
+                  (job
+                    ? job.request.narration_mode !== "silent"
+                    : narrationChoice !== "silent"),
+              )
+              .map((name, i) => {
+                const current = stageNames.indexOf(job?.state ?? "");
+                const done =
+                  job?.timeline.some((t) => t.stage === name) &&
+                  (!activeStates.includes(job.state) ||
+                    current > stageNames.indexOf(name));
+                return (
+                  <li
+                    key={name}
+                    className={
+                      done ? "done" : job?.state === name ? "current" : ""
+                    }
+                  >
+                    <span>{done ? "✓" : i + 1}</span>
+                    <div>
+                      <b>{human(name)}</b>
+                      <p>
+                        {name === "planning"
+                          ? "Grounded script and scene direction"
+                          : name === "capturing"
+                            ? "Real product footage"
+                            : name === "quality_check"
+                              ? "Streams, dimensions and duration"
+                              : name === "narrating"
+                                ? "Voice synthesis and timing"
+                                : name === "rendering"
+                                  ? (
+                                      job
+                                        ? job.request.narration_mode ===
+                                          "silent"
+                                        : narrationChoice === "silent"
+                                    )
+                                    ? "Silent video composition"
+                                    : "Video, captions and audio"
+                                  : name === "researching"
+                                    ? "Official source evidence"
+                                    : "Authorized website"}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
           </ol>
           {job?.state === "awaiting_plan_approval" && (
             <div className="lp-approval">

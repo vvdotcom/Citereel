@@ -127,17 +127,6 @@
   flex: 1;
   padding: 26px 24px 28px;
 }
-.home-testimonial-stars {
-  display: flex;
-  gap: 3px;
-  margin-bottom: 14px;
-  color: #ffb316;
-}
-.home-testimonial-stars svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
 .home-testimonial-card blockquote {
   margin: 0;
   color: var(--home-navy);
@@ -152,13 +141,6 @@
   padding: 18px 24px;
   background: var(--home-orange);
   color: #182330;
-}
-.home-testimonial-avatar {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
 }
 .home-testimonial-card figcaption strong {
   display: block;

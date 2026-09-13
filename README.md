@@ -2,7 +2,7 @@
 
 **Turn a product website into a narrated demo, with sources you can review.**
 
-Citereel helps founders and product marketers turn product pages into presentations, walkthroughs, spotlights, and portrait shorts. A Strands agent inspects the authorized website and prepares a source-linked storyboard. After any required human review, a background worker records the pages, generates narration and captions, renders an MP4, and checks the result. Creators can revise the story while retaining previous exports and reusable footage.
+Citereel helps founders and product marketers turn product pages into presentations, walkthroughs, spotlights, and portrait shorts. A Strands Agents planner inspects the authorized website and prepares a source-linked storyboard. After any required human review, a background worker records the pages, generates optional narration and captions, renders an MP4, and checks the result. Creators can revise the story while retaining previous exports and reusable footage.
 
 [Live demo](https://dqhy3yyc3g60j.cloudfront.net/) · [Open studio](https://dqhy3yyc3g60j.cloudfront.net/studio/) · [Cloud verification](https://dqhy3yyc3g60j.cloudfront.net/verification/) · [Judge walkthrough](docs/judge-guide.md)
 
@@ -82,6 +82,8 @@ Open **http://127.0.0.1:3011**. The launcher starts Next.js, the FastAPI service
 
 Local mode uses SQLite and `.launchpad-data/`; it does not require the cloud DynamoDB/SQS/AgentCore deployment. Bedrock and Polly calls incur AWS usage. Windows test narration is explicitly available with `LAUNCHPAD_VOICE=windows`. The deterministic fixture planner is also an explicit testing option. Neither silently replaces a failed AWS service.
 
+The local studio also offers a **Cinematic** visual style with animated headings and a **Silent — add voice later** narration option. Silent exports omit audio and captions and do not invoke Polly. Live Bedrock planning still needs AWS access. See [video production notes](docs/video-production.md) for the short Citereel demo and the reusable recording-to-film command. These additions have been verified locally; the existing public samples describe their own older renderer.
+
 Keep `.env` and AWS credentials private. Local sessions, generated builds, and verification scratch files are excluded from Git. Curated public assets are included under `public/`.
 
 ## Verify the installation
@@ -114,7 +116,7 @@ Published evidence includes the [cloud report](public/verification/cloud-report.
 - Website change checks compare bounded text. Scheduled monitoring exists in the infrastructure source but was absent from the deployed stack inventory checked on September 12, 2026.
 - CloudWatch service logs and an operations dashboard are documented. Full AgentCore trace export remains incomplete.
 - Caption timings are approximate. Sample duration means playback length; the samples are not a controlled speed, cost, or quality benchmark.
-- **Landing-page testimonials use fictional characters, AI-generated portraits, and sample quotes for testing.** Founder-test personas and the Northstar/Relay products are also fictional fixtures. These materials are not customer endorsements or evidence of adoption, time savings, or commercial impact. Real-user validation remains to be done.
+- The landing page shows three user-supplied feedback quotes from friends who tried CiteReel. They are qualitative feedback, not evidence of adoption, time savings, or commercial impact. Founder-test personas and the Northstar/Relay products are fictional fixtures; broader real-user validation remains to be done.
 
 ## Repository map
 
@@ -133,7 +135,7 @@ Published evidence includes the [cloud report](public/verification/cloud-report.
 
 The project uses Next.js, React, Tailwind CSS, Preline UI, Strands Agents, boto3, FastAPI, Playwright, Pillow, and FFmpeg. JavaScript dependencies are recorded in [package-lock.json](package-lock.json); Python dependencies are pinned in [requirements.txt](requirements.txt) and [requirements-dev.txt](requirements-dev.txt). AI coding assistance and AI image generation were used during development.
 
-Design references include the earlier ProjectV/Veyframe workspace and `presentation-story@2` layouts, plus supplied circuit-style slide and testimonial references. The [design notes](docs/design-refresh.md) describe those influences and earlier layout reproductions; [editorial.py](services/worker/src/launchpad_worker/editorial.py) identifies the referenced geometry. These references are disclosed as prior design work. The [submission checklist](docs/hackathon-checklist.md) tracks the remaining provenance confirmation.
+Design references include the earlier ProjectV/Veyframe workspace and `presentation-story@2` layouts, plus supplied circuit-style slide and testimonial references. The [design notes](docs/design-refresh.md) describe those influences and earlier layout reproductions; [editorial.py](services/worker/src/launchpad_worker/editorial.py) identifies the referenced geometry. A supplied Curtail demo informed the pacing and typography of the [silent first cut](docs/video-production.md); its media and branding are not included. These references are disclosed as prior design work. The [submission checklist](docs/hackathon-checklist.md) tracks the remaining provenance confirmation.
 
 Inter and Roboto Mono include their [Inter](assets/Inter-LICENSE.txt) and [Roboto Mono](assets/RobotoMono-LICENSE.txt) notices. Preline's notices are in [Preline-LICENSE.txt](assets/Preline-LICENSE.txt). Diagrams use official AWS icons with [source attribution](docs/architecture/README.md#aws-icon-source). Third-party assets and trademarks retain their respective terms; the AWS documentation example does not imply an Amazon endorsement.
 
@@ -142,3 +144,5 @@ Inter and Roboto Mono include their [Inter](assets/Inter-LICENSE.txt) and [Robot
 Citereel's project code is released under the [MIT License](LICENSE). The existing copyright notice retains the former Launchpad Concierge name.
 
 This repository provides source, setup instructions, architecture diagrams, and testing documentation for the **Agents for Humans Hackathon**. The [submission checklist](docs/hackathon-checklist.md) tracks the separate public video, repository visibility, provenance, and judge-access requirements. A README alone does not complete the Devpost submission.
+
+Recording materials: [4:25 demo script with AWS deployment walkthrough](docs/demo-script.md) and [project description draft](docs/project-description.md).

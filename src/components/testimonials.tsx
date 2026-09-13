@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import "./testimonials.css";
 
 const testimonials = [
@@ -10,42 +9,18 @@ const testimonials = [
     role: "Founder, Orbit Notes",
     quote:
       "Seeing our product as a story helped everything click. I could review the script, adjust the details, and make the demo feel like us before recording.",
-    portrait: "/testimonials/mia-chen-photo.png",
   },
   {
     name: "Rafael Cruz",
     role: "Product lead, Fieldwork",
     quote:
       "The storyboard gave our team something concrete to review. Having the source beside each claim made it easier to decide what belonged in our product demo.",
-    portrait: "/testimonials/rafael-cruz-photo.png",
   },
   {
     name: "Nora Ellis",
     role: "Designer, Little North",
     quote:
       "I liked being able to shape the story before the video was made. The narration and captions brought the walkthrough together without losing the product details.",
-    portrait: "/testimonials/nora-ellis-photo.png",
-  },
-  {
-    name: "Devon Brooks",
-    role: "Indie founder, Canvas Lane",
-    quote:
-      "Starting with our website made the first draft feel familiar. I could focus on the message, review each scene, and keep the parts that told our story best.",
-    portrait: "/testimonials/devon-brooks-photo.png",
-  },
-  {
-    name: "Asha Patel",
-    role: "Marketing lead, Gatherly",
-    quote:
-      "A feature update gave us a reason to revisit the demo. Reviewing the changed scenes while keeping the rest made the update feel focused and manageable.",
-    portrait: "/testimonials/asha-patel-photo.png",
-  },
-  {
-    name: "Theo Park",
-    role: "Co-founder, Pebble Studio",
-    quote:
-      "The different video formats helped me picture where our story could go. I could check the finished export with the team before choosing what to share.",
-    portrait: "/testimonials/theo-park-photo.png",
   },
 ];
 
@@ -98,8 +73,7 @@ export function Testimonials() {
               What our creators <em>say.</em>
             </h2>
             <p id="testimonials-note">
-              Fictional characters, AI-generated portraits, and sample quotes
-              for testing.
+              Feedback from friends who tried CiteReel.
             </p>
           </div>
           <div
@@ -136,7 +110,7 @@ export function Testimonials() {
           ref={track}
           onScroll={updateControls}
           tabIndex={0}
-          aria-label="Fictional testimonials"
+          aria-label="Feedback from friends who tried CiteReel"
           onKeyDown={(event) => {
             if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
             event.preventDefault();
@@ -147,28 +121,9 @@ export function Testimonials() {
             <li key={person.name}>
               <figure className="home-testimonial-card">
                 <div className="home-testimonial-copy">
-                  <div
-                    className="home-testimonial-stars"
-                    role="img"
-                    aria-label="Sample rating: 5 out of 5 stars"
-                  >
-                    {[0, 1, 2, 3, 4].map((star) => (
-                      <svg key={star} viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="m12 2 3 6.5 7 .9-5.1 5 1.3 7.1-6.2-3.4-6.2 3.4 1.3-7.1L2 9.4l7-.9Z" />
-                      </svg>
-                    ))}
-                  </div>
                   <blockquote>{person.quote}</blockquote>
                 </div>
                 <figcaption>
-                  <Image
-                    className="home-testimonial-avatar"
-                    src={person.portrait}
-                    alt=""
-                    width={48}
-                    height={48}
-                    sizes="48px"
-                  />
                   <div>
                     <strong>{person.name}</strong>
                     <span>{person.role}</span>

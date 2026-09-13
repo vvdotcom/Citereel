@@ -21,6 +21,8 @@ class GenerationRequest(BaseModel):
     duration_seconds: Literal[30, 45, 60, 90, 120, 180] = 45
     tone: str = Field(default="Clear and credible", max_length=100)
     narration_voice: Literal["female", "male"] = "female"
+    narration_mode: Literal["voice", "silent"] = "voice"
+    visual_style: Literal["circuit", "cinematic"] = "circuit"
     format: Literal["presentation", "product", "spotlight", "short"] = "presentation"
     orientation: Literal["landscape", "portrait"] = "landscape"
     call_to_action: str = Field(default="Explore the product", max_length=100)

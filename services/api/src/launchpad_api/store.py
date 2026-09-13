@@ -187,10 +187,16 @@ class Store:
         def change(j):
             if j["cancel_requested"]:
                 raise InterruptedError("Production cancelled")
+            silent_render = (
+                j["state"] == "capturing"
+                and state == "rendering"
+                and j["request"].get("narration_mode") == "silent"
+            )
             if (
                 state != j["state"]
                 and state not in EDGES.get(j["state"], set())
                 and state not in {"failed", "blocked", "cancelled"}
+                and not silent_render
             ):
                 raise ValueError(f"Invalid transition {j['state']} -> {state}")
             j.update(updates)

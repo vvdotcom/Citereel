@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 from launchpad_api.settings import ROOT
 from PIL import Image, ImageDraw, ImageFont
 
-from . import circuit, editorial
+from . import circuit, editorial, motion
 from .speech import synthesize
 
 
@@ -70,6 +70,8 @@ def product_name(request):
 
 
 def layout(request, index=0):
+    if request.get("visual_style") == "cinematic":
+        return motion.layout(request, index)
     return circuit.layout(request, index)
 
 
@@ -231,9 +233,17 @@ def render(
     duration = total / len(scenes)
     audio = []
     voice_receipts = []
-    on_stage("narrating", "Synthesizing the validated scene narration.")
+    silent = request.get("narration_mode") == "silent"
+    cinematic = request.get("visual_style") == "cinematic"
+    use_captions = request["captions"] and not silent
+    if not silent:
+        on_stage("narrating", "Synthesizing the validated scene narration.")
     for i, scene in enumerate(scenes):
         check()
+        if silent:
+            audio.append(None)
+            voice_receipts.append({"provider": "None (silent export)", "scene": i + 1, "target_seconds": duration})
+            continue
         output, receipt = (
             cached_narration[i]
             if cached_narration is not None
@@ -254,20 +264,34 @@ def render(
         voice_receipts.append(
             {**receipt, "scene": i + 1, "original_seconds": actual, "target_seconds": duration}
         )
-    on_stage("rendering", "Composing real browser footage, narration, typography and captions.")
+    on_stage("rendering", "Composing browser footage and animated titles." if cinematic else "Composing browser footage and typography.")
     (w, h), _ = layout(request)
     for i, scene in enumerate(scenes):
         check()
         _, (x, y, bw, bh) = layout(request, i)
+        if cinematic:
+            caption_path = folder / f"captions-{i}.ass"
+            if use_captions:
+                captions(scene["narration"], duration, caption_path, (w, h))
+            motion.render_scene(
+                clips[i], folder / f"render-{i}.mp4", duration=duration,
+                title=scene["title"], brand=product_name(request),
+                accent=(request.get("brand") or {}).get("primary_color", "#ff9900"),
+                size=(w, h), box=(x, y, bw, bh), audio=audio[i],
+                captions=caption_path if use_captions else None, check=check,
+            )
+            continue
         background(scene, request, i, len(scenes), folder / f"background-{i}.png", scenes)
         captions(scene["narration"], duration, folder / f"captions-{i}.ass", (w, h))
         editorial.rounded_mask((bw, bh), folder / f"mask-{i}.png")
-        video_filter = f"[1:v]scale={bw}:{bh}:flags=lanczos:force_original_aspect_ratio=decrease:force_divisible_by=2,pad={bw}:{bh}:(ow-iw)/2:(oh-ih)/2:color=0x121920,setsar=1,fps=24,tpad=stop_mode=clone:stop_duration={duration},format=rgba[clip];[clip][3:v]alphamerge[rounded];[0:v][rounded]overlay={x}:{y}:shortest=1[composed]"
+        mask_input = 2 if silent else 3
+        video_filter = f"[1:v]scale={bw}:{bh}:flags=lanczos:force_original_aspect_ratio=decrease:force_divisible_by=2,pad={bw}:{bh}:(ow-iw)/2:(oh-ih)/2:color=0x121920,setsar=1,fps=24,tpad=stop_mode=clone:stop_duration={duration},format=rgba[clip];[clip][{mask_input}:v]alphamerge[rounded];[0:v][rounded]overlay={x}:{y}:shortest=1[composed]"
         tail = "[composed]"
-        if request["captions"]:
+        if use_captions:
             video_filter += f";[composed]ass=captions-{i}.ass[captioned]"
             tail = "[captioned]"
-        video_filter += f";[2:a]atempo={audio[i][1]:.5f},apad,atrim=0:{duration},afade=t=out:st={duration - 0.15}:d=0.15[a]"
+        if not silent:
+            video_filter += f";[2:a]atempo={audio[i][1]:.5f},apad,atrim=0:{duration},afade=t=out:st={duration - 0.15}:d=0.15[a]"
         args = [
             "ffmpeg",
             "-y",
@@ -279,8 +303,7 @@ def render(
             f"background-{i}.png",
             "-i",
             clips[i],
-            "-i",
-            str(audio[i][0]),
+            *([] if silent else ["-i", str(audio[i][0])]),
             "-loop",
             "1",
             "-i",
@@ -289,8 +312,7 @@ def render(
             video_filter,
             "-map",
             tail,
-            "-map",
-            "[a]",
+            *(["-an"] if silent else ["-map", "[a]"]),
             "-t",
             str(duration),
             "-r",
@@ -343,7 +365,7 @@ def render(
     actual = float(info["format"]["duration"])
     if (
         not video
-        or not sound
+        or (sound is not None if silent else sound is None)
         or (video["width"], video["height"]) != (w, h)
         or abs(actual - total) > 1
     ):
@@ -368,28 +390,30 @@ def render(
         "width": w,
         "height": h,
         "video_codec": video["codec_name"],
-        "audio_codec": sound["codec_name"],
+        "audio_codec": sound["codec_name"] if sound else "none",
+        "narration_mode": "silent" if silent else "voice",
         "sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
         "bytes": output.stat().st_size,
         "product_name": product_name(request),
-        "template": "amazon-circuit-reference-v2-footage-first",
-        "video_border": "shared-tablet-bezel",
+        "template": "cinematic-type-v1" if cinematic else "amazon-circuit-reference-v2-footage-first",
+        "video_border": "minimal-screen-frame" if cinematic else "shared-tablet-bezel",
         "browser_content_scale": circuit.content_scale(request),
         "camera_motion": "Disabled",
         "scene_duration_seconds": round(duration, 2),
         "pointer_sync": "Visible pointer follows narration-matched page content",
         "footage_playback": "Recorded interactions once, then hold final frame if needed; no click looping",
         "recorded_clicks": sum(e.get("action") == "click" for e in job.get("capture_events", [])),
-        "heading_font": "Roboto Mono Bold",
+        "heading_font": "Inter" if cinematic else "Roboto Mono Bold",
+        "text_motion": "Staggered fade and eased rise" if cinematic else "Static",
         "footage_corner_radius": editorial.RADIUS,
         "scene_layouts": [
             {
                 "scene": i + 1,
-                "layout": circuit.kind(i),
-                "reference_image": f"temp{i % len(circuit.KINDS) + 1}.jpg",
+                "layout": "cinematic-desktop" if cinematic else circuit.kind(i),
+                "reference_image": None if cinematic else f"temp{i % len(circuit.KINDS) + 1}.jpg",
                 "header": circuit.header_text(scene, i, product_name(request)),
                 "items": circuit.legend_rows(scene, scenes)
-                if circuit.kind(i) == "legend-list" and request["orientation"] == "landscape"
+                if not cinematic and circuit.kind(i) == "legend-list" and request["orientation"] == "landscape"
                 else [],
                 "source_ids": scene["source_ids"],
             }
@@ -403,7 +427,7 @@ def render(
             for clip in clips
         ],
         "captions": "Approximate word highlighting (proportional timings)"
-        if request["captions"]
+        if use_captions
         else "Disabled",
         "voices": voice_receipts,
     }

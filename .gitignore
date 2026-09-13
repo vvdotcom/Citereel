@@ -86,3 +86,42 @@ $RECYCLE.BIN/
 
 # Keep source, tests, lockfiles, .env.example, infrastructure, licenses,
 # docs/architecture, and curated public/ assets available for a fresh clone.
+
+# Local demo-video production and presenter tooling. These are one-off editing
+# helpers and scripts, rather than the Citereel application runtime.
+/scripts/generate_elevenlabs_voiceover.py
+/scripts/generate_heygen_voiceover.py
+/scripts/refresh_demo_design.py
+/scripts/render_product_film.py
+/scripts/speak.ps1
+/docs/demo-script.md
+/docs/long-presentations.md
+/docs/video-production.md
+/tests/test_film_audio.py
+/tests/test_long_presentations.py
+/tests/test_motion_export.py
+/tests/test_video_design.py
+
+# Local recordings and post-production media. Curated product media under
+# public/ remains eligible for the repository when needed.
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.wav
+*.mp3
+*.aac
+*.srt
+*.ass
+!public/**/*.mp4
+!public/**/*.mov
+!public/**/*.webm
+!public/**/*.wav
+!public/**/*.mp3
+
+# Keep the public repository focused on its README and license. Other local
+# Markdown notes and production documents are not included.
+*.md
+!README.md
+!LICENSE.md

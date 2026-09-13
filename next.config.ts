@@ -3,6 +3,7 @@ import examples from "./public/examples/manifest.json";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  devIndicators: false,
   agentRules: false,
   output: process.env.LAUNCHPAD_STATIC_EXPORT === "true" ? "export" : undefined,
   trailingSlash: process.env.LAUNCHPAD_STATIC_EXPORT === "true",

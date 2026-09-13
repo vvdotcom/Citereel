@@ -1679,6 +1679,10 @@
 
 /* Muted light theme: distinct AWS-inspired surface levels without glare. */
 .lp-app {
+  --lp-canvas: #e3e8ed;
+  --lp-panel: #f4f6f7;
+  --lp-border: #a4b1bc;
+  --lp-muted: #536575;
   background: #e3e8ed;
   color: #182431;
   color-scheme: light;
@@ -1803,6 +1807,40 @@
   border-color: #bc7919;
   color: #4d3513;
 }
+.lp-app .lp-claims blockquote,
+.lp-app .lp-sources blockquote,
+.lp-app .lp-trace strong {
+  color: #182431;
+}
+.lp-app .lp-trace-note,
+.lp-app .lp-trace li p,
+.lp-app .lp-trace time,
+.lp-app .lp-receipts p,
+.lp-app .lp-settings p,
+.lp-app dt {
+  color: #536575;
+}
+.lp-app .lp-approval p {
+  color: #65410f;
+}
+.lp-app dl,
+.lp-app .lp-job-current {
+  background: #dce4eb;
+  color: #182431;
+}
+.lp-app .lp-job-report a,
+.lp-app .lp-job-progress output,
+.lp-app .lp-scene-order,
+.lp-app .pl-disclosure-toggle {
+  color: #8a4b00;
+}
+.lp-app .lp-project:hover {
+  background: #e1e8ee;
+  color: #182431;
+}
+.lp-app .lp-project h2 {
+  color: #182431;
+}
 .lp-app .lp-status[data-state="needs_review"] {
   background: #fff2dc;
   border-color: #bc7919;
@@ -1827,6 +1865,26 @@
 }
 .lp-login p {
   color: #536575;
+}
+
+/* Keep desktop navigation and approval controls available during long reviews. */
+@media (min-width: 1141px) {
+  .lp-app > .lp-nav,
+  .lp-app > .lp-activity {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+  }
+}
+.lp-app .lp-job-report thead {
+  background: #dce4eb;
+}
+.lp-app .lp-job-report th {
+  color: #293b4b;
 }
 
 /* Phone layout: turn the compact desktop rail into a reachable bottom bar and
