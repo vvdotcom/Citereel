@@ -128,6 +128,28 @@ def login(body: Credentials, response: Response):
     return {"owner": user}
 
 
+@app.post("/v1/session/judge-demo")
+def judge_demo(response: Response):
+    """Sign reviewers into the shared, ordinary judge workspace.
+
+    Credentials are configured only in the API environment. The endpoint is
+    intentionally unavailable on deployments that do not provide both values.
+    """
+    email = os.getenv("LAUNCHPAD_JUDGE_DEMO_EMAIL", "").strip().lower()
+    password = os.getenv("LAUNCHPAD_JUDGE_DEMO_PASSWORD", "")
+    if not email or not password:
+        raise HTTPException(404, "Judge demo access is not enabled for this deployment.")
+    try:
+        user = store.authenticate(email, password)
+    except PermissionError:
+        try:
+            user = store.register_user(email, password)
+        except ValueError:
+            user = store.authenticate(email, password)
+    set_session(response, user)
+    return {"owner": user, "judge_demo": True}
+
+
 @app.post("/v1/session/logout")
 def logout(request: Request, response: Response):
     store.end_session(request.cookies.get("launchpad_session", ""))

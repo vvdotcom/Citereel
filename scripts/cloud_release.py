@@ -1,6 +1,7 @@
 """Versioned, secret-free CodeBuild uploads. Does not remove existing releases."""
 import argparse
 import json
+import os
 import time
 import zipfile
 import subprocess
@@ -40,6 +41,12 @@ def main():
             subprocess.run(["aws", "cloudformation", "package", "--template-file", "infra/template.yaml", "--s3-bucket", f"launchpad-deploy-{account}-{REGION}", "--output-template-file", template, "--region", REGION], cwd=ROOT, check=True)
             stack = "launchpad-serverless"
             params = [f"ApiImageUri={state['images']['launchpad-api']}", f"WorkerImageUri={state['images']['launchpad-worker']}"]
+            judge_email = os.getenv("LAUNCHPAD_JUDGE_DEMO_EMAIL", "").strip()
+            judge_password = os.getenv("LAUNCHPAD_JUDGE_DEMO_PASSWORD", "")
+            if judge_email:
+                params.append(f"JudgeDemoEmail={judge_email}")
+            if judge_password:
+                params.append(f"JudgeDemoPassword={judge_password}")
             if args.enable_agent:
                 runtimes = boto3.client("bedrock-agentcore-control", region_name=REGION).list_agent_runtimes()["agentRuntimes"]
                 runtime = next(r for r in runtimes if r["agentRuntimeName"] == "launchpad_concierge")

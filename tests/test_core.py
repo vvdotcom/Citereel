@@ -184,6 +184,20 @@ def test_api_auth_and_premature_export(client):
     assert api.get("/v1/jobs/" + j["id"] + "/receipt").status_code == 404
 
 
+def test_judge_demo_creates_and_reuses_a_normal_account(client, monkeypatch):
+    api, db = client
+    monkeypatch.setenv("LAUNCHPAD_JUDGE_DEMO_EMAIL", "judge@example.com")
+    monkeypatch.setenv("LAUNCHPAD_JUDGE_DEMO_PASSWORD", "Judge-demo-password-2026")
+    api.cookies.clear()
+    first = api.post("/v1/session/judge-demo")
+    assert first.status_code == 200 and first.json()["judge_demo"]
+    owner = first.json()["owner"]
+    assert db.authenticate("judge@example.com", "Judge-demo-password-2026") == owner
+    api.cookies.clear()
+    second = api.post("/v1/session/judge-demo")
+    assert second.status_code == 200 and second.json()["owner"] == owner
+
+
 def test_storyboard_approval_requires_pending_state(client):
     api, db = client
     j = db.create(request(), "alice")

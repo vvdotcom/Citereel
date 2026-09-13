@@ -4,9 +4,29 @@
 
 Citereel helps founders and product marketers turn product pages into presentations, walkthroughs, spotlights, and portrait shorts. A Strands Agents planner inspects the authorized website and prepares a source-linked storyboard. After any required human review, a background worker records the pages, generates optional narration and captions, renders an MP4, and checks the result. Creators can revise the story while retaining previous exports and reusable footage.
 
-[Live demo](https://dqhy3yyc3g60j.cloudfront.net/) · [Open studio](https://dqhy3yyc3g60j.cloudfront.net/studio/) · [Cloud verification](https://dqhy3yyc3g60j.cloudfront.net/verification/) · [Judge walkthrough](docs/judge-guide.md)
+[Watch demo](https://youtu.be/kb56yzrBgxk) &middot; [Live demo](https://dsq1zqt33aijv.cloudfront.net/) &middot; [Open studio](https://dsq1zqt33aijv.cloudfront.net/studio/) &middot; [Cloud verification](https://dsq1zqt33aijv.cloudfront.net/verification/)
 
 Formerly **Launchpad Concierge**. Python packages, environment variables, AWS resources, and historical receipts retain `launchpad` names for compatibility.
+
+## See Citereel in action
+
+<p align="center">
+  <img src="./public/readme/live-studio.png" alt="Citereel Studio landing page with four video formats" width="960">
+</p>
+
+Citereel starts with an authorized product website, builds a reviewable storyboard, and produces a narrated product video from real browser footage.
+
+<p align="center">
+  <img src="./public/readme/studio-workflow.gif" alt="Citereel planning a production with its Strands Agent workflow" width="720">
+</p>
+
+<p align="center">
+  <img src="./public/readme/storyboard-evidence.png" alt="Citereel storyboard review with source-linked narration and creator approval controls" width="960">
+</p>
+
+<p align="center">
+  <img src="./public/readme/benchmarks-testimonials.png" alt="Citereel benchmarks and creator feedback section" width="960">
+</p>
 
 ## Why it exists
 
@@ -19,11 +39,11 @@ Making a product demo involves researching the product, writing a script, record
 3. Inspect the agent's sources, claims, and script. Correct or acknowledge claims requiring review, then approve the storyboard.
 4. Play the completed video, inspect its receipts, and download the MP4. Try a revision to see the new plan and retained export versions.
 
-Public samples and the verification page can be viewed without an account. Live generation takes time and depends on AWS availability and the source website. The default allowance is 20 accepted productions per user per UTC day. The [judge guide](docs/judge-guide.md) covers the full testing path and failure recovery.
+Public samples and the verification page can be viewed without an account. Live generation takes time and depends on AWS availability and the source website. The default allowance is 20 accepted productions per user per UTC day.
 
 ## Architecture
 
-![Citereel AWS hosting: CloudFront and S3 frontend, API Gateway and Lambda API, DynamoDB, SQS, Fargate, Bedrock AgentCore, Bedrock, Polly, and private S3 exports](docs/architecture/01-aws-full-stack.png)
+![Citereel AWS hosting: CloudFront and S3 frontend, API Gateway and Lambda API, DynamoDB, SQS, Fargate, Bedrock AgentCore, Bedrock, Polly, and private S3 exports](./public/readme/aws-architecture.png)
 
 The hosted frontend is a Next.js static export on S3, delivered through CloudFront. `/v1/*` requests reach a FastAPI Lambda through API Gateway. DynamoDB stores production state; SQS and a dispatcher launch Fargate workers. Workers invoke the Strands planner in Bedrock AgentCore, then use Playwright, Amazon Polly, and FFmpeg to produce private S3 exports. The API checks ownership before issuing temporary download URLs.
 
@@ -34,7 +54,7 @@ The hosted frontend is a Next.js static export on S3, delivered through CloudFro
 | Strands agent loop | [PNG](docs/architecture/03-strands-agent-loop.png) | [SVG](docs/architecture/03-strands-agent-loop.svg) |
 | Lifecycle hooks and policy checks | [PNG](docs/architecture/04-agent-policy-hooks.png) | [SVG](docs/architecture/04-agent-policy-hooks.svg) |
 
-See [diagram sources and deployment scope](docs/architecture/README.md), [architecture details](docs/architecture.md), and [AWS release instructions](docs/agentcore-operations.md).
+The complete diagram set is included in [`docs/architecture/`](docs/architecture/).
 
 ## How Strands does the work
 
@@ -82,7 +102,7 @@ Open **http://127.0.0.1:3011**. The launcher starts Next.js, the FastAPI service
 
 Local mode uses SQLite and `.launchpad-data/`; it does not require the cloud DynamoDB/SQS/AgentCore deployment. Bedrock and Polly calls incur AWS usage. Windows test narration is explicitly available with `LAUNCHPAD_VOICE=windows`. The deterministic fixture planner is also an explicit testing option. Neither silently replaces a failed AWS service.
 
-The local studio also offers a **Cinematic** visual style with animated headings and a **Silent — add voice later** narration option. Silent exports omit audio and captions and do not invoke Polly. Live Bedrock planning still needs AWS access. See [video production notes](docs/video-production.md) for the short Citereel demo and the reusable recording-to-film command. These additions have been verified locally; the existing public samples describe their own older renderer.
+The local studio also offers a **Cinematic** visual style with animated headings and a **Silent &mdash; add voice later** narration option. Silent exports omit audio and captions and do not invoke Polly. Live Bedrock planning still needs AWS access.
 
 Keep `.env` and AWS credentials private. Local sessions, generated builds, and verification scratch files are excluded from Git. Curated public assets are included under `public/`.
 
@@ -107,7 +127,7 @@ Optional live checks use your AWS configuration and incur usage:
 .venv/Scripts/python.exe scripts/verify_pipeline.py --bedrock
 ```
 
-Published evidence includes the [cloud report](public/verification/cloud-report.json), [cloud receipt](public/verification/cloud-receipt.json), and [sample measurements](public/examples/manifest.json). See [verification notes](docs/verification.md) for recorded runs and reproduction commands. Historical receipts describe those runs, not current service health.
+Published evidence includes the [cloud report](public/verification/cloud-report.json), [cloud receipt](public/verification/cloud-receipt.json), and [sample measurements](public/examples/manifest.json). Historical receipts describe recorded runs, not current service health.
 
 ## Scope and evidence
 
@@ -129,13 +149,14 @@ Published evidence includes the [cloud report](public/verification/cloud-report.
 | `infra/` | AWS templates, dispatcher, monitoring, and recovery functions |
 | `public/` | Curated examples, verification evidence, and website assets |
 | `tests/`, `scripts/` | Automated checks, setup, and release utilities |
-| `docs/` | Architecture diagrams, judge guide, deployment, and verification notes |
+| `docs/architecture/` | Public AWS diagrams and editable SVG sources |
+| `public/readme/` | GitHub-hosted README screenshots, workflow GIF, and architecture image |
 
 ## Credits and prior-work disclosure
 
 The project uses Next.js, React, Tailwind CSS, Preline UI, Strands Agents, boto3, FastAPI, Playwright, Pillow, and FFmpeg. JavaScript dependencies are recorded in [package-lock.json](package-lock.json); Python dependencies are pinned in [requirements.txt](requirements.txt) and [requirements-dev.txt](requirements-dev.txt). AI coding assistance and AI image generation were used during development.
 
-Design references include the earlier ProjectV/Veyframe workspace and `presentation-story@2` layouts, plus supplied circuit-style slide and testimonial references. The [design notes](docs/design-refresh.md) describe those influences and earlier layout reproductions; [editorial.py](services/worker/src/launchpad_worker/editorial.py) identifies the referenced geometry. A supplied Curtail demo informed the pacing and typography of the [silent first cut](docs/video-production.md); its media and branding are not included. These references are disclosed as prior design work. The [submission checklist](docs/hackathon-checklist.md) tracks the remaining provenance confirmation.
+Design references include the earlier ProjectV/Veyframe workspace and `presentation-story@2` layouts, plus supplied circuit-style slide and testimonial references. A supplied Curtail demo informed the pacing and typography of the silent first cut; its media and branding are not included. These references are disclosed as prior design work.
 
 Inter and Roboto Mono include their [Inter](assets/Inter-LICENSE.txt) and [Roboto Mono](assets/RobotoMono-LICENSE.txt) notices. Preline's notices are in [Preline-LICENSE.txt](assets/Preline-LICENSE.txt). Diagrams use official AWS icons with [source attribution](docs/architecture/README.md#aws-icon-source). Third-party assets and trademarks retain their respective terms; the AWS documentation example does not imply an Amazon endorsement.
 
@@ -143,6 +164,4 @@ Inter and Roboto Mono include their [Inter](assets/Inter-LICENSE.txt) and [Robot
 
 Citereel's project code is released under the [MIT License](LICENSE). The existing copyright notice retains the former Launchpad Concierge name.
 
-This repository provides source, setup instructions, architecture diagrams, and testing documentation for the **Agents for Humans Hackathon**. The [submission checklist](docs/hackathon-checklist.md) tracks the separate public video, repository visibility, provenance, and judge-access requirements. A README alone does not complete the Devpost submission.
-
-Recording materials: [4:25 demo script with AWS deployment walkthrough](docs/demo-script.md) and [project description draft](docs/project-description.md).
+This repository provides source, setup instructions, architecture diagrams, and testing instructions for the **Agents for Humans Hackathon**. The separate public video, repository visibility, provenance, and judge-access requirements still need to be completed on the submission platform.\n

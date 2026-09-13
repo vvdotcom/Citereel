@@ -92,6 +92,8 @@ $RECYCLE.BIN/
 /scripts/generate_elevenlabs_voiceover.py
 /scripts/generate_heygen_voiceover.py
 /scripts/refresh_demo_design.py
+/scripts/render_hackathon_music.py
+/scripts/render_hackathon_subtitles.py
 /scripts/render_product_film.py
 /scripts/speak.ps1
 /docs/demo-script.md

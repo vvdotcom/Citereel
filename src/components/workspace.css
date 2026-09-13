@@ -1866,6 +1866,22 @@
 .lp-login p {
   color: #536575;
 }
+.lp-login .lp-judge-demo {
+  width: 100%;
+  margin-top: 2px;
+  border-color: #b98224;
+  background: #fff8e9;
+  color: #62420c;
+  font-weight: 600;
+}
+.lp-login .lp-judge-demo:hover {
+  background: #ffefcc;
+}
+.lp-login .lp-judge-copy {
+  margin: 8px 0 12px;
+  font-size: 12px;
+  line-height: 1.45;
+}
 
 /* Keep desktop navigation and approval controls available during long reviews. */
 @media (min-width: 1141px) {

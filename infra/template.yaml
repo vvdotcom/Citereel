@@ -27,6 +27,15 @@ Parameters:
     Default: 20
     MinValue: 1
     MaxValue: 100
+  JudgeDemoEmail:
+    Type: String
+    Default: ''
+    Description: Optional shared reviewer account email.
+  JudgeDemoPassword:
+    Type: String
+    Default: ''
+    NoEcho: true
+    Description: Optional shared reviewer account password.
 
 Resources:
   Artifacts:
@@ -141,6 +150,8 @@ Resources:
           LAUNCHPAD_LOCAL_MODE: 'false'
           LAUNCHPAD_SECURE_COOKIES: 'true'
           LAUNCHPAD_DAILY_JOB_LIMIT: !Ref DailyJobLimit
+          LAUNCHPAD_JUDGE_DEMO_EMAIL: !Ref JudgeDemoEmail
+          LAUNCHPAD_JUDGE_DEMO_PASSWORD: !Ref JudgeDemoPassword
           LAUNCHPAD_WORKER_LOG_GROUP: !Ref WorkerLogGroup
           LAUNCHPAD_DASHBOARD: !Sub '${AWS::StackName}-operations'
       Events:

@@ -436,6 +436,18 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
       setBusy(false);
     }
   }
+  async function enterJudgeDemo() {
+    setBusy(true);
+    try {
+      await api("session/judge-demo", "POST");
+      setSession(true);
+      setNotice("");
+    } catch (e) {
+      setNotice((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
   async function create(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setBusy(true);
@@ -605,6 +617,22 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
               {authMode === "login" ? "Sign in" : "Create account"}
             </button>
           </form>
+          {authMode === "login" && (
+            <>
+              <button
+                className="lp-judge-demo"
+                type="button"
+                onClick={enterJudgeDemo}
+                disabled={busy}
+              >
+                Enter judge demo
+              </button>
+              <p className="lp-judge-copy">
+                Opens the shared reviewer workspace with the same features as a
+                standard account.
+              </p>
+            </>
+          )}
           <button
             className="lp-text"
             onClick={() =>
