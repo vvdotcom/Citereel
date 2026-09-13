@@ -8,6 +8,19 @@ Citereel helps founders and product marketers turn product pages into presentati
 
 Formerly **Launchpad Concierge**. Python packages, environment variables, AWS resources, and historical receipts retain `launchpad` names for compatibility.
 
+## Why it exists
+
+Making a product demo involves researching the product, writing a script, recording screens, narrating, editing, and repeating that work when the product changes. Citereel connects those steps in one production workflow. Source references and review checkpoints help creators catch unsupported claims before they become a video. Website text-change checks identify affected scenes so a revision can preserve useful recordings.
+
+## Try it
+
+1. Open the [studio](https://dqhy3yyc3g60j.cloudfront.net/studio/) and create an account. Hosted generation uses the deployment's AWS configuration; testers do not enter AWS keys.
+2. Choose an included Northstar or Relay sample, or an authorized public product website. Start with a 30-second production and enable storyboard review.
+3. Inspect the agent's sources, claims, and script. Correct or acknowledge claims requiring review, then approve the storyboard.
+4. Play the completed video, inspect its receipts, and download the MP4. Try a revision to see the new plan and retained export versions.
+
+Public samples and the verification page can be viewed without an account. Live generation takes time and depends on AWS availability and the source website. The default allowance is 20 accepted productions per user per UTC day.
+
 ## See Citereel in action
 
 <p align="center">
@@ -27,19 +40,6 @@ Citereel starts with an authorized product website, builds a reviewable storyboa
 <p align="center">
   <img src="./public/readme/benchmarks-testimonials.png" alt="Citereel benchmarks and creator feedback section" width="960">
 </p>
-
-## Why it exists
-
-Making a product demo involves researching the product, writing a script, recording screens, narrating, editing, and repeating that work when the product changes. Citereel connects those steps in one production workflow. Source references and review checkpoints help creators catch unsupported claims before they become a video. Website text-change checks identify affected scenes so a revision can preserve useful recordings.
-
-## Try it
-
-1. Open the [studio](https://dqhy3yyc3g60j.cloudfront.net/studio/) and create an account. Hosted generation uses the deployment's AWS configuration; testers do not enter AWS keys.
-2. Choose an included Northstar or Relay sample, or an authorized public product website. Start with a 30-second production and enable storyboard review.
-3. Inspect the agent's sources, claims, and script. Correct or acknowledge claims requiring review, then approve the storyboard.
-4. Play the completed video, inspect its receipts, and download the MP4. Try a revision to see the new plan and retained export versions.
-
-Public samples and the verification page can be viewed without an account. Live generation takes time and depends on AWS availability and the source website. The default allowance is 20 accepted productions per user per UTC day.
 
 ## Architecture
 
