@@ -300,6 +300,11 @@ class Store:
             raise PermissionError("Email or password is incorrect.")
         return row["id"]
 
+    def user_email(self, owner):
+        with self.connection() as db:
+            row = db.execute("SELECT email FROM users WHERE id=?", (owner,)).fetchone()
+        return row["email"] if row else None
+
     def end_session(self, token):
         with self.connection() as db:
             db.execute("DELETE FROM sessions WHERE token=?", (hashlib.sha256(token.encode()).hexdigest(),))
@@ -488,6 +493,14 @@ class DynamoStore(Store):
 
     def end_session(self, token):
         self.table.delete_item(Key=self._key("SESSION", hashlib.sha256(token.encode()).hexdigest(), "SESSION"))
+
+    def user_email(self, owner):
+        profile = self.table.get_item(
+            Key=self._key("USER", owner, "PROFILE"),
+            ProjectionExpression="email",
+            ConsistentRead=True,
+        ).get("Item", {})
+        return profile.get("email")
 
 
 store = DynamoStore() if os.getenv("LAUNCHPAD_STORE") == "dynamodb" else Store()

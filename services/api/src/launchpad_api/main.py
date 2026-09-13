@@ -98,7 +98,7 @@ def health():
 
 @app.get("/v1/session")
 def session(user=Depends(owner)):
-    return {"owner": user}
+    return {"owner": user, "email": store.user_email(user)}
 
 
 @app.post("/v1/session/local")
@@ -115,7 +115,7 @@ def register(body: Credentials, response: Response):
         raise ValueError("Enter a valid email address.")
     user = store.register_user(body.email.strip().lower(), body.password)
     set_session(response, user)
-    return {"owner": user}
+    return {"owner": user, "email": body.email.strip().lower()}
 
 
 @app.post("/v1/session/login")
@@ -125,7 +125,7 @@ def login(body: Credentials, response: Response):
     except PermissionError:
         raise HTTPException(401, "Email or password is incorrect.")
     set_session(response, user)
-    return {"owner": user}
+    return {"owner": user, "email": body.email.strip().lower()}
 
 
 @app.post("/v1/session/judge-demo")

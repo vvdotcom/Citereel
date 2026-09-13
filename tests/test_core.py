@@ -333,8 +333,10 @@ def test_account_registration_login_logout(client):
     api, db = client
     api.cookies.clear()
     credentials = {"email": "creator@example.test", "password": "a-test-password-only"}
-    assert api.post("/v1/session/register", json=credentials).status_code == 200
-    assert api.get("/v1/session").status_code == 200
+    registered = api.post("/v1/session/register", json=credentials)
+    assert registered.status_code == 200
+    assert registered.json()["email"] == credentials["email"]
+    assert api.get("/v1/session").json() == registered.json()
     assert api.post("/v1/session/logout").status_code == 200
     assert api.get("/v1/session").status_code == 401
     assert (
@@ -343,8 +345,42 @@ def test_account_registration_login_logout(client):
         ).status_code
         == 401
     )
-    assert api.post("/v1/session/login", json=credentials).status_code == 200
-    assert api.get("/v1/session").status_code == 200
+    logged_in = api.post("/v1/session/login", json=credentials)
+    assert logged_in.status_code == 200
+    assert logged_in.json()["email"] == credentials["email"]
+    assert api.get("/v1/session").json() == logged_in.json()
+    assert set(logged_in.json()) == {"owner", "email"}
+
+
+def test_session_email_is_normalized_and_account_scoped(client):
+    api, db = client
+    api.cookies.clear()
+    first = api.post("/v1/session/register", json={
+        "email": "First@Example.test", "password": "first-test-password",
+    })
+    assert first.json()["email"] == "first@example.test"
+    api.post("/v1/session/logout")
+    second = api.post("/v1/session/register", json={
+        "email": "second@example.test", "password": "second-test-password",
+    })
+    assert second.json()["owner"] != first.json()["owner"]
+    assert api.get("/v1/session").json()["email"] == "second@example.test"
+    assert db.user_email("missing-user") is None
+
+
+def test_dynamo_session_identity_reads_only_own_email():
+    from launchpad_api.store import DynamoStore
+
+    class ProfileTable:
+        def get_item(self, **kwargs):
+            assert kwargs["Key"] == DynamoStore._key("USER", "account-one", "PROFILE")
+            assert kwargs["ProjectionExpression"] == "email"
+            assert kwargs["ConsistentRead"] is True
+            return {"Item": {"email": "account@example.test"}}
+
+    db = object.__new__(DynamoStore)
+    db.table = ProfileTable()
+    assert db.user_email("account-one") == "account@example.test"
 
 
 def test_generated_code_is_not_a_storyboard_field():

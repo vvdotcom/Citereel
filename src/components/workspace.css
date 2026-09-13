@@ -100,9 +100,17 @@
   padding: 16px 0;
   border-bottom: 1px solid #d5d9d9;
 }
-.lp-policy-review summary { cursor: pointer; font-weight: 600; }
-.lp-app .lp-policy-review li { display: block; padding: 12px 0; }
-.lp-policy-review p { margin: 6px 0; }
+.lp-policy-review summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.lp-app .lp-policy-review li {
+  display: block;
+  padding: 12px 0;
+}
+.lp-policy-review p {
+  margin: 6px 0;
+}
 .lp-trace {
   min-width: 0;
   overflow-wrap: anywhere;
@@ -1866,22 +1874,6 @@
 .lp-login p {
   color: #536575;
 }
-.lp-login .lp-judge-demo {
-  width: 100%;
-  margin-top: 2px;
-  border-color: #b98224;
-  background: #fff8e9;
-  color: #62420c;
-  font-weight: 600;
-}
-.lp-login .lp-judge-demo:hover {
-  background: #ffefcc;
-}
-.lp-login .lp-judge-copy {
-  margin: 8px 0 12px;
-  font-size: 12px;
-  line-height: 1.45;
-}
 
 /* Keep desktop navigation and approval controls available during long reviews. */
 @media (min-width: 1141px) {
@@ -1912,7 +1904,7 @@
   .lp-app:has(.lp-projects) {
     display: block;
     min-height: 100svh;
-    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    padding-bottom: calc(124px + env(safe-area-inset-bottom));
   }
   .lp-app .lp-nav {
     position: fixed;
@@ -1922,8 +1914,8 @@
     left: 0;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    min-height: calc(72px + env(safe-area-inset-bottom));
-    height: calc(72px + env(safe-area-inset-bottom));
+    min-height: calc(124px + env(safe-area-inset-bottom));
+    height: calc(124px + env(safe-area-inset-bottom));
     padding: 5px 8px max(5px, env(safe-area-inset-bottom));
     border: 0;
     border-top: 1px solid #344a5e;
@@ -2014,7 +2006,7 @@
     gap: 0;
   }
   .lp-app .lp-brief-bar {
-    bottom: calc(72px + env(safe-area-inset-bottom));
+    bottom: calc(124px + env(safe-area-inset-bottom));
     left: 0;
     gap: 8px;
     padding: 10px 16px 12px;
@@ -2069,12 +2061,173 @@
   .lp-login > section {
     width: 100%;
     min-height: 100svh;
-    padding: max(28px, env(safe-area-inset-top)) 20px max(32px, env(safe-area-inset-bottom));
+    padding: max(28px, env(safe-area-inset-top)) 20px
+      max(32px, env(safe-area-inset-bottom));
     border: 0;
     border-radius: 0;
   }
   .lp-login h1 {
     margin-top: 48px;
     font-size: 32px;
+  }
+}
+
+/* Account controls stay readable against the dark navigation at every size. */
+.lp-app .lp-nav-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 16px 10px;
+  gap: 12px;
+  color: #f7f9fb;
+}
+.lp-app .lp-nav-bottom div {
+  display: block;
+  min-width: 0;
+}
+.lp-app .lp-nav-bottom b {
+  color: #d7e1e9;
+  font-size: 12px;
+}
+.lp-app .lp-nav-bottom .lp-account-email {
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.lp-app .lp-nav-bottom .lp-logout {
+  display: block;
+  min-height: 44px;
+  padding: 8px 4px;
+  border: 1px solid #9eb0c1;
+  border-radius: 6px;
+  background: #263b50;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+.lp-app .lp-nav-bottom .lp-logout:hover {
+  background: #344f69;
+}
+.lp-login form {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.lp-login label {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.lp-login input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #8798a7;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.lp-login button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #263b50;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.lp-login form .lp-primary {
+  margin: 0 0 8px;
+}
+.lp-login form .lp-password-toggle {
+  justify-self: end;
+  width: auto;
+  margin: -8px 0 0;
+  background: #f4f6f7;
+  color: #263b50;
+}
+.lp-login .lp-text {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 14px;
+  background: #f4f6f7;
+  color: #263b50;
+  border: 1px solid #526a80;
+}
+.lp-login .lp-text:hover,
+.lp-login form .lp-password-toggle:hover {
+  background: #dce4eb;
+  color: #182431;
+}
+.lp-login p.lp-error {
+  color: #9b2020;
+  font-weight: 600;
+}
+.lp-login button:disabled,
+.lp-app .lp-logout:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+.lp-login :is(button, input, a):focus-visible,
+.lp-app .lp-logout:focus-visible {
+  outline: 3px solid #0066b3;
+  outline-offset: 3px;
+}
+@media (min-width: 641px) and (max-width: 1400px) {
+  .lp-app .lp-nav-bottom {
+    padding-inline: 5px;
+  }
+  .lp-app .lp-nav-bottom .lp-account-email {
+    font-size: 11px;
+  }
+}
+@media (min-width: 851px) and (max-width: 1400px) {
+  .lp-app {
+    grid-template-columns: 160px minmax(400px, 1fr) 280px;
+  }
+  .lp-app.with-intake {
+    grid-template-columns: 160px 300px minmax(350px, 1fr);
+  }
+  .lp-app:has(.lp-settings),
+  .lp-app:has(.lp-projects) {
+    grid-template-columns: 160px minmax(0, 1fr);
+  }
+  .lp-app .lp-brief-bar {
+    left: 160px;
+  }
+  .lp-app .lp-nav nav span {
+    display: block;
+  }
+  .lp-app .lp-nav nav button {
+    justify-content: flex-start;
+  }
+  .lp-app .lp-nav-bottom {
+    padding-inline: 12px;
+  }
+  .lp-app .lp-nav-bottom .lp-account-email {
+    font-size: 13px;
+  }
+}
+@media (max-width: 640px) {
+  .lp-app .lp-nav-bottom {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 6px 4px;
+    border: 0;
+    gap: 12px;
+  }
+  .lp-app .lp-nav-bottom .lp-account-email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .lp-app .lp-nav-bottom .lp-logout {
+    flex: 0 0 76px;
   }
 }

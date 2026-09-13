@@ -358,6 +358,8 @@ function Glyph({ name }: { name: string }) {
 export function Workspace({ initialView = "create" }: { initialView?: View }) {
   const [view, setView] = useState<View>(initialView);
   const [session, setSession] = useState(false);
+  const [email, setEmail] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [selected, setSelected] = useState<string | null>(null);
   const [settings, setSettings] = useState<Settings | null>(null);
@@ -392,9 +394,12 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
   }, []);
   useEffect(() => {
     let active = true;
-    api("session")
-      .then(() => {
-        if (active) setSession(true);
+    api<{ email?: string }>("session")
+      .then((identity) => {
+        if (active) {
+          setEmail(identity.email ?? "");
+          setSession(true);
+        }
       })
       .catch(() => {});
     return () => {
@@ -405,13 +410,21 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
     if (!session) return;
     let stopped = false;
     const update = () =>
-      refresh().catch((e) => {
-        if (!stopped) setNotice(e.message);
-      });
+      api<Job[]>("jobs")
+        .then((results) => {
+          if (!stopped) setJobs(results);
+        })
+        .catch((e) => {
+          if (!stopped) setNotice(e.message);
+        });
     void update();
     api<Settings>("settings")
-      .then(setSettings)
-      .catch((e) => setNotice(e.message));
+      .then((results) => {
+        if (!stopped) setSettings(results);
+      })
+      .catch((e) => {
+        if (!stopped) setNotice(e.message);
+      });
     const timer = setInterval(update, 2500);
     return () => {
       stopped = true;
@@ -424,10 +437,18 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
     const data = new FormData(event.currentTarget);
     setBusy(true);
     try {
-      await api("session/" + authMode, "POST", {
-        email: data.get("email"),
-        password: data.get("password"),
-      });
+      const identity = await api<{ email?: string }>(
+        "session/" + authMode,
+        "POST",
+        {
+          email: data.get("email"),
+          password: data.get("password"),
+        },
+      );
+      setEmail(
+        identity.email ?? String(data.get("email")).trim().toLowerCase(),
+      );
+      setShowPassword(false);
       setSession(true);
       setNotice("");
     } catch (e) {
@@ -436,11 +457,19 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
       setBusy(false);
     }
   }
-  async function enterJudgeDemo() {
+  async function logout() {
     setBusy(true);
     try {
-      await api("session/judge-demo", "POST");
-      setSession(true);
+      await api("session/logout", "POST");
+      setSession(false);
+      setEmail("");
+      setJobs([]);
+      setSelected(null);
+      setSettings(null);
+      setDraft(null);
+      setSource("");
+      setView("create");
+      setAuthMode("login");
       setNotice("");
     } catch (e) {
       setNotice((e as Error).message);
@@ -591,21 +620,25 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
             <BrandMark />
             citereel
           </Link>
-          <h1>Your next product story starts here.</h1>
+          <h1>
+            {authMode === "login"
+              ? "Sign in to Citereel"
+              : "Create your account"}
+          </h1>
           <p>
             Research, script, record, narrate and review your product video in
             one workspace.
           </p>
           <form onSubmit={auth}>
             <label>
-              Email
+              Email address
               <input name="email" type="email" autoComplete="email" required />
             </label>
             <label>
               Password
               <input
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 minLength={10}
                 autoComplete={
                   authMode === "login" ? "current-password" : "new-password"
@@ -613,31 +646,30 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
                 required
               />
             </label>
+            <button
+              className="lp-password-toggle"
+              type="button"
+              aria-pressed={showPassword}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Hide password" : "Show password"}
+            </button>
             <button className="lp-primary" type="submit" disabled={busy}>
-              {authMode === "login" ? "Sign in" : "Create account"}
+              {busy
+                ? "Please wait…"
+                : authMode === "login"
+                  ? "Sign in"
+                  : "Create account"}
             </button>
           </form>
-          {authMode === "login" && (
-            <>
-              <button
-                className="lp-judge-demo"
-                type="button"
-                onClick={enterJudgeDemo}
-                disabled={busy}
-              >
-                Enter judge demo
-              </button>
-              <p className="lp-judge-copy">
-                Opens the shared reviewer workspace with the same features as a
-                standard account.
-              </p>
-            </>
-          )}
           <button
             className="lp-text"
-            onClick={() =>
-              setAuthMode(authMode === "login" ? "register" : "login")
-            }
+            disabled={busy}
+            onClick={() => {
+              setAuthMode(authMode === "login" ? "register" : "login");
+              setNotice("");
+              setShowPassword(false);
+            }}
           >
             {authMode === "login"
               ? "Create an account"
@@ -679,19 +711,14 @@ export function Workspace({ initialView = "create" }: { initialView?: View }) {
           )}
         </nav>
         <div className="lp-nav-bottom">
-          <span className="lp-avatar">CR</span>
           <div>
-            <b>Your workspace</b>
-            <span>Citereel Concierge</span>
+            <b>Signed in as</b>
+            <span className="lp-account-email" title={email}>
+              {email || "Local workspace"}
+            </span>
           </div>
-          <button
-            aria-label="Sign out"
-            onClick={async () => {
-              await api("session/logout", "POST");
-              setSession(false);
-            }}
-          >
-            ↪
+          <button className="lp-logout" disabled={busy} onClick={logout}>
+            Log out
           </button>
         </div>
       </aside>

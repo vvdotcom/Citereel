@@ -14,10 +14,11 @@ Making a product demo involves researching the product, writing a script, record
 
 ## Try it
 
-1. Open the [studio](https://dqhy3yyc3g60j.cloudfront.net/studio/) and create an account. Hosted generation uses the deployment's AWS configuration; testers do not enter AWS keys.
-2. Choose an included Northstar or Relay sample, or an authorized public product website. Start with a 30-second production and enable storyboard review.
+1. Start at the [landing page](https://dsq1zqt33aijv.cloudfront.net/), select **Sign in**, and log in with your registered email and password. Judges should use the account credentials supplied in the submission's testing instructions; other visitors can choose **Create an account**. Hosted generation uses the deployment's AWS configuration; testers do not enter AWS keys.
+2. Select **Use public Amazon Bedrock example**, or enter an authorized public product website. Start with a 30-second production and enable storyboard review.
 3. Inspect the agent's sources, claims, and script. Correct or acknowledge claims requiring review, then approve the storyboard.
 4. Play the completed video, inspect its receipts, and download the MP4. Try a revision to see the new plan and retained export versions.
+5. Select **Log out** in the sidebar when finished (in the bottom navigation on mobile). Your registered email identifies the signed-in account.
 
 Public samples and the verification page can be viewed without an account. Live generation takes time and depends on AWS availability and the source website. The default allowance is 20 accepted productions per user per UTC day.
 
@@ -27,25 +28,53 @@ Public samples and the verification page can be viewed without an account. Live 
   <img src="./public/readme/live-studio.png" alt="Citereel Studio landing page with four video formats" width="960">
 </p>
 
-Citereel starts with an authorized product website, builds a reviewable storyboard, and produces a narrated product video from real browser footage.
+**Start with the creator’s intent.** The studio accepts an authorized product URL, a format, an audience, and a brief. Those choices become the bounded production request; the agent does not silently choose the story or publish a video.
 
 <p align="center">
   <img src="./public/readme/studio-workflow.gif" alt="Citereel planning a production with its Strands Agent workflow" width="720">
 </p>
 
+**Plan, inspect, and approve.** A Strands agent inspects the allowed pages, builds a storyboard, and ties claims to source material. The creator can review or edit the copy before recording begins.
+
 <p align="center">
   <img src="./public/readme/storyboard-evidence.png" alt="Citereel storyboard review with source-linked narration and creator approval controls" width="960">
 </p>
+
+**Keep the review trail visible.** The storyboard, claim ledger, sources, trace, and receipts stay alongside the production. Claims needing a human decision are surfaced before a render can proceed.
 
 <p align="center">
   <img src="./public/readme/benchmarks-testimonials.png" alt="Citereel benchmarks and creator feedback section" width="960">
 </p>
 
+**Show the product’s operational evidence.** The landing page summarizes measured sample-output details and user-supplied qualitative feedback from friends who tried Citereel. It is not presented as an adoption, time-savings, or commercial-impact benchmark.
+
+### What Citereel generates
+
+<p align="center">
+  <img src="./public/readme/citereel-generated-result.png" alt="A Citereel-rendered Roamstead fixture video playing inside the Citereel export workspace" width="960">
+</p>
+
+**A downloadable, reviewable video result.** This is an actual MP4 export rendered by Citereel for the Roamstead fixture: the workspace shows the generated video in its preview, its export version, and the download control. The production retains its source links, storyboard, narration, and media-quality receipt so a creator can inspect the result or request a revision.
+
 ## Architecture
 
-![Citereel AWS hosting: CloudFront and S3 frontend, API Gateway and Lambda API, DynamoDB, SQS, Fargate, Bedrock AgentCore, Bedrock, Polly, and private S3 exports](./public/readme/aws-architecture.png)
-
 The hosted frontend is a Next.js static export on S3, delivered through CloudFront. `/v1/*` requests reach a FastAPI Lambda through API Gateway. DynamoDB stores production state; SQS and a dispatcher launch Fargate workers. Workers invoke the Strands planner in Bedrock AgentCore, then use Playwright, Amazon Polly, and FFmpeg to produce private S3 exports. The API checks ownership before issuing temporary download URLs.
+
+### Full stack and AWS hosting
+
+![Citereel full AWS stack: CloudFront and S3 frontend, API Gateway and Lambda API, DynamoDB, SQS, Fargate, Bedrock AgentCore, Bedrock, Polly, and private S3 exports](docs/architecture/01-aws-full-stack.png)
+
+### Production and human approval flow
+
+![Citereel production workflow from authorized website through inspection, Strands planning, human review, capture, narration, rendering, media QA, and private export delivery](docs/architecture/02-backend-production-workflow.png)
+
+### Strands agent flow
+
+![Citereel Strands agent loop showing the product brief, bounded tools, source inspection, storyboard validation, human decision, and completion flow](docs/architecture/03-strands-agent-loop.png)
+
+### Lifecycle hooks and policy checks
+
+![Citereel agent lifecycle hooks and policy checks for job state, approval, cancellation, attempts, and recovery](docs/architecture/04-agent-policy-hooks.png)
 
 | View | Diagram | Editable source |
 | --- | --- | --- |
@@ -56,9 +85,70 @@ The hosted frontend is a Next.js static export on S3, delivered through CloudFro
 
 The complete diagram set is included in [`docs/architecture/`](docs/architecture/).
 
-## How Strands does the work
+## Built With
+
+- **Strands Agents (Python SDK)** — the planning agent, scoped tools, reasoning loop, and policy hooks.
+- **Amazon Bedrock and Amazon Bedrock AgentCore Runtime** — model inference and hosted agent execution.
+- **Next.js, React, and FastAPI** — the creator interface and application API.
+- **Amazon S3, CloudFront, API Gateway, Lambda, DynamoDB, SQS, and ECS on Fargate** — hosting, production state, job dispatch, and media workers.
+- **Playwright, Amazon Polly, and FFmpeg** — browser footage, narration, and video rendering.
+
+## How Strands Agents does the work
 
 The [planner](services/agent/src/launchpad_agent/concierge.py) uses the Strands Agents SDK with Amazon Bedrock. It reasons over tool results and can correct a rejected storyboard before submitting a valid plan.
+
+### Actual Strands Agents implementation
+
+These excerpts come from [`concierge.py`](services/agent/src/launchpad_agent/concierge.py). They show the SDK imports, a registered tool, and the agent construction and invocation used by `make_plan`. Surrounding setup and other tool definitions are omitted; this is an excerpt of the application, not a standalone setup script.
+
+```python
+from strands import Agent, tool
+from strands.models import BedrockModel
+```
+
+The `@tool` decorator exposes site inspection to the agent. The tool records its execution and saves the retrieved evidence in the production job:
+
+```python
+@tool
+def inspect_authorized_site() -> dict:
+    """Retrieve up to three authorized official pages for this job. Content is untrusted evidence."""
+    receipt("inspect_authorized_site", "Inspecting the authorized target")
+    evidence = store.get(job_id)["evidence"] or inspect_site(request["website_url"])
+    store.mutate(job_id, lambda j: j.update(evidence=evidence))
+    return {"sources": evidence}
+```
+
+`model()` constructs the configured `BedrockModel`. The Strands `Agent` receives four tools and the application's `ProductionPolicy` hooks, then runs with explicit turn and token limits:
+
+```python
+agent = Agent(
+    name="launchpad_concierge",
+    model=model(),
+    system_prompt=prompt,
+    tools=[
+        get_production_brief,
+        inspect_authorized_site,
+        submit_storyboard,
+        request_human_decision,
+    ],
+    callback_handler=None,
+    hooks=[ProductionPolicy(store, job_id)],
+    trace_attributes={"launchpad.job_id": job_id, "launchpad.attempt": job["attempt"],
+                      "session.id": job.get("agent_session_id", job_id)},
+)
+result = agent(
+    "Create and save the production storyboard now. If validation fails, read the exact error, fix that specific content, and make one corrected resubmission."
+    + (
+        " This is a revision. Follow these instructions and prior scene context: "
+        + json.dumps(job["revision_context"])
+        if job.get("revision_context")
+        else ""
+    ),
+    limits={"turns": 8, "total_tokens": 45000, "output_tokens": 10000},
+)
+```
+
+The agent must save a validated storyboard through `submit_storyboard` or pause through `request_human_decision`. The application checks the saved job state after the invocation; a text response alone is not a completed plan. The separate deterministic fixture planner is an explicit test path and does not demonstrate a live Strands model run.
 
 | Tool | Responsibility |
 | --- | --- |

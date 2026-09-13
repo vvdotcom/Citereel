@@ -93,7 +93,8 @@ export function Landing() {
       <header className="home-header">
         <div className="home-header-inner">
           <Link href="/" className="home-brand" aria-label="Citereel home">
-            <BrandMark />citereel
+            <BrandMark />
+            citereel
           </Link>
           <button
             className="home-menu-toggle"
@@ -122,7 +123,7 @@ export function Landing() {
               Your projects
             </Link>
             <Link className="home-button home-button-primary" href="/studio">
-              Open workspace <span aria-hidden="true">↗</span>
+              Sign in <span aria-hidden="true">↗</span>
             </Link>
           </nav>
         </div>
@@ -370,7 +371,8 @@ export function Landing() {
       </main>
       <footer className="home-container">
         <Link href="/" className="home-brand">
-          <BrandMark />citereel
+          <BrandMark />
+          citereel
         </Link>
         <span>Built with Strands Agents and Amazon Bedrock.</span>
         <Link href="/verification">Cloud verification</Link>
