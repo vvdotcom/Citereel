@@ -4,7 +4,7 @@
 
 Citereel helps founders and product marketers turn product pages into presentations, walkthroughs, spotlights, and portrait shorts. A Strands Agents planner inspects the authorized website and prepares a source-linked storyboard. After any required human review, a background worker records the pages, generates optional narration and captions, renders an MP4, and checks the result. Creators can revise the story while retaining previous exports and reusable footage.
 
-[Watch demo](https://youtu.be/kb56yzrBgxk) &middot; [Live demo](https://dsq1zqt33aijv.cloudfront.net/) &middot; [Open studio](https://dsq1zqt33aijv.cloudfront.net/studio/) &middot; [Cloud verification](https://dsq1zqt33aijv.cloudfront.net/verification/)
+[Watch demo](https://youtu.be/kb56yzrBgxk)
 
 Formerly **Launchpad Concierge**. Python packages, environment variables, AWS resources, and historical receipts retain `launchpad` names for compatibility.
 
@@ -14,7 +14,7 @@ Making a product demo involves researching the product, writing a script, record
 
 ## Try it
 
-1. Start at the [landing page](https://dsq1zqt33aijv.cloudfront.net/), select **Sign in**, and log in with your registered email and password. Judges should use the account credentials supplied in the submission's testing instructions; other visitors can choose **Create an account**. Hosted generation uses the deployment's AWS configuration; testers do not enter AWS keys.
+1. Open Citereel using the access details supplied in the submission's testing instructions, or follow [Run locally](#run-locally). From the landing page, select **Sign in** and log in with your registered email and password. Judges should use the supplied judge account; other visitors can choose **Create an account**. Hosted generation uses the deployment's AWS configuration; testers do not enter AWS keys.
 2. Select **Use public Amazon Bedrock example**, or enter an authorized public product website. Start with a 30-second production and enable storyboard review.
 3. Inspect the agent's sources, claims, and script. Correct or acknowledge claims requiring review, then approve the storyboard.
 4. Play the completed video, inspect its receipts, and download the MP4. Try a revision to see the new plan and retained export versions.
